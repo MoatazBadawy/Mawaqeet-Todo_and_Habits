@@ -72,4 +72,6 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.44'
     // Datastore module
     implementation project(':core:datastore')
+    // Database module
+    implementation project(':core:database:database')
 }
