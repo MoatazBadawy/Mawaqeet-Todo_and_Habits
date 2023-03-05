@@ -71,7 +71,9 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.44'
     kapt 'com.google.dagger:hilt-compiler:2.44'
     // Datastore module
-    implementation project(':core:datastore')
+    implementation project(":core:datastore")
     // Database module
-    implementation project(':core:database:database')
+    implementation project(":core:database:database")
+    // Data Repository module
+    implementation project(":data:repository")
 }
