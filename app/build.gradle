@@ -76,4 +76,6 @@ dependencies {
     implementation project(":core:database:database")
     // Data Repository module
     implementation project(":data:repository")
+    // Ui view
+    implementation project(":ui:view")
 }

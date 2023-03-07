@@ -23,7 +23,7 @@ object DatabaseModule {
             appContext,
             MawaqeetDatabase::class.java,
             DATABASE_NAME
-        ).build()
+        ).createFromAsset("database/mawaqeet.db").build()
     }
 
     @Singleton
