@@ -56,7 +56,7 @@
                 android:layout_marginTop="4dp"
                 android:layoutDirection="rtl"
                 android:overScrollMode="never"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="-5dp"
                 android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="@+id/edit_text_habit_name"
                 app:layout_constraintStart_toStartOf="@+id/edit_text_habit_name"
