@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="habitType"
+            type="com.ui.viewmodel.utils.HabitType" />
+
+        <variable
+            name="viewModel"
+            type="com.ui.viewmodel.HabitAddingViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/label_new_habit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/new_habit"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:elevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_new_habit"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottei_plant_growing" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_chips_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layoutDirection="rtl"
+                android:overScrollMode="never"
+                android:paddingHorizontal="-5dp"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_habit_name"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_habit_name"
+                app:layout_constraintTop_toBottomOf="@+id/lottie">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    app:checkedChip="@+id/spirituality_chip"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/spirituality_chip"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onChipChooseHabitType(habitType.SPIRITUALITY)}"
+                        android:text="@string/spirituality_chip"
+                        android:checkable="true"
+                        app:chipStrokeColor="@android:color/transparent" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/mentality_chip"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onChipChooseHabitType(habitType.MENTALITY)}"
+                        android:text="@string/mentality_chip"
+                        app:chipStrokeColor="@android:color/transparent" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/physical_chip"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onChipChooseHabitType(habitType.PHYSICAL)}"
+                        android:text="@string/physical_chip"
+                        app:chipStrokeColor="@android:color/transparent" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/personality_chip"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onChipChooseHabitType(habitType.PERSONALITY)}"
+                        android:text="@string/personality_chip"
+                        app:chipStrokeColor="@android:color/transparent" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_text_habit_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorMessage="@{@string/habit_name_error_message}"
+                app:isFieldValid="@{viewModel.isNameValid}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_chips_scroll_view">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/habit_name"
+                    android:inputType="text"
+                    android:text="@={viewModel.habitName}"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_add_new_habit"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.addHabitDialogClicked()}"
+                android:text="@string/add"
+                android:textAllCaps="false"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_habit_name"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_habit_name" />
+
+            <Button
+                android:id="@+id/button_cancel"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> viewModel.onCloseDialogClick()}"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/button_add_new_habit"
+                app:layout_constraintEnd_toStartOf="@+id/button_add_new_habit"
+                app:layout_constraintTop_toTopOf="@+id/button_add_new_habit" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

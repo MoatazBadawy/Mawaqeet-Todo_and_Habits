@@ -1,0 +1,8 @@
+<resources>
+    <style name="ChipStyle" parent="@style/Widget.Material3.Chip.Suggestion">
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
+
