@@ -10,9 +10,6 @@
 ![](https://user-images.githubusercontent.com/63272288/223731766-bc007d9b-b386-4587-9c26-654d850c5d21.png)
 <br />
 
-<a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
-<br />
-
 ## Overview 
 An app that provides you with the tools and resources to build healthy and positive habits in an efficient and easy way. You will get daily notifications to achieve your goals. Try the app now and embark on the journey of building a healthy and positive life.
 - A great way to build new habits.
@@ -20,4 +17,7 @@ An app that provides you with the tools and resources to build healthy and posit
 - Choose your favorite section and add habits easily.
 - The ability to search in the hadiths of the Prophet.
 - Daily notifications to remind you of morning and evening habits
+<br />
+
+<a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 <br />
