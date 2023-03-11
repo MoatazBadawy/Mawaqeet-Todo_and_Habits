@@ -13,6 +13,8 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.moataz.mawaqeet.R
+import com.moataz.mawaqeet.components.notification.HabitAlertMorningNotification
+import com.moataz.mawaqeet.components.notification.HabitAlertNightNotification
 import com.moataz.mawaqeet.databinding.ActivityMainBinding
 import com.suddenh4x.ratingdialog.AppRating
 import com.suddenh4x.ratingdialog.preferences.RatingThreshold
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         initView(window)
         initNavigationHosting()
+        initNotification()
         displayAppRating()
         inAppUpdate()
     }
@@ -44,6 +47,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navHostFragment.navController
+    }
+
+    private fun initNotification() {
+        HabitAlertMorningNotification().setupHabitAlertMorningNotification(this)
+        HabitAlertNightNotification().setupHabitAlertNightNotification(this)
     }
 
     private fun displayAppRating() {
