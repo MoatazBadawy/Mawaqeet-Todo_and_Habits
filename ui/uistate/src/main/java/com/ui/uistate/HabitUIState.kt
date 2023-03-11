@@ -4,7 +4,6 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
 
-@Keep
 @Parcelize
 data class HabitUIState(
     val id : Long = 0,
