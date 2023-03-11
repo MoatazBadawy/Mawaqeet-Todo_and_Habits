@@ -21,3 +21,8 @@ An app that provides you with the tools and resources to build healthy and posit
 
 <a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 <br />
+
+## Project Architecture
+![MVVM3](https://raw.githubusercontent.com/AliAsadi/Android-Clean-Architecture/master/screenshot/architecture0.png)
+
+<br />
