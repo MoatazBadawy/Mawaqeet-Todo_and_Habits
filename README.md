@@ -10,13 +10,11 @@
 ![](https://user-images.githubusercontent.com/63272288/223731766-bc007d9b-b386-4587-9c26-654d850c5d21.png)
 
 ## Overview 
-Mawaqeet is an Android app designed to help you build healthy and positive habits in an efficient and easy way. With this app, you'll receive daily notifications to remind you of your goals, and you can easily choose from a variety of departments and diverse customs to add to your daily routine.
-- A great way to build new habits.
+An app that provides you with the tools and resources to build healthy and positive habits in an efficient and easy way. You will get daily notifications to achieve your goals. Try the app now and embark on the journey of building a healthy and positive life.- A great way to build new habits.
 - Many departments and diverse customs.
 - Choose your favorite section and add habits easily.
 - Daily notifications to remind you of morning and evening habits
 
-The app is available on Google Play, so you can try it out for yourself and start building a healthy and positive life today!.
 <a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 <br />
 
