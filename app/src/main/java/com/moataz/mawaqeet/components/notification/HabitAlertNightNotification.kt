@@ -15,9 +15,14 @@ import com.moataz.mawaqeet.main.MainActivity
 import java.util.*
 
 class HabitAlertNightNotification : BroadcastReceiver() {
-    private val channelId = HABIT_ALERT_NIGHT_CHANNEL_ID
-
     override fun onReceive(context: Context, intent: Intent?) {
+        // Create the notification channel
+        val channelId = HABIT_ALERT_NIGHT_CHANNEL_ID
+
+        // Get the title string from the resources file
+        val title = context.getString(R.string.night_notification_title)
+        val description = context.getString(R.string.night_notification_description)
+
         val notificationIntent = Intent(context, MainActivity::class.java)
         val resultPendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
             // Add the intent, which inflates the back stack
@@ -30,8 +35,8 @@ class HabitAlertNightNotification : BroadcastReceiver() {
         }
 
         val notification: Notification = NotificationCompat.Builder(context, channelId)
-            .setContentTitle(R.string.night_notification_title.toString())
-            .setContentText(R.string.night_notification_description.toString())
+            .setContentTitle(title)
+            .setContentText(description)
             .setSmallIcon(R.drawable.ic_habits)
             .setLights(Notification.FLAG_SHOW_LIGHTS, 1000, 500)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
