@@ -10,28 +10,28 @@
 ![](https://user-images.githubusercontent.com/63272288/223731766-bc007d9b-b386-4587-9c26-654d850c5d21.png)
 
 ## Overview 
-An app that provides you with the tools and resources to build healthy and positive habits in an efficient and easy way. You will get daily notifications to achieve your goals. Try the app now and embark on the journey of building a healthy and positive life.
+Mawaqeet is an Android app designed to help you build healthy and positive habits in an efficient and easy way. With this app, you'll receive daily notifications to remind you of your goals, and you can easily choose from a variety of departments and diverse customs to add to your daily routine.
 - A great way to build new habits.
 - Many departments and diverse customs.
 - Choose your favorite section and add habits easily.
 - Daily notifications to remind you of morning and evening habits
 
+The app is available on Google Play, so you can try it out for yourself and start building a healthy and positive life today!.
 <a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 <br />
 
 ## Project Architecture:
-This project is Follow Clean Architecture Structure and MVVM. I Found Most of people sayes this is also use MVI because of the existence of the domain and its interaction with the project. So I'll start researching and reading into this topic and will update the repo after that. Anyway, let's get to the reliability of the project.
+This project follows the Clean Architecture structure and MVVM. The domain layer contains UseCases that encapsulate a single, specific task that is part of the application's business logic. The data layer implements the repository interface defined in the domain layer, providing a single source of truth for data. The UI layer uses all the components and classes related to the Android framework to get the data from the ViewModel layer and display it on the UI.
 
 
 <img src="https://user-images.githubusercontent.com/63272288/224539374-26ea3e6b-ed81-4700-bbbe-640489aeca38.jpg" width="600" />
 
 ## Modules:
-* **ui** - It uses all the components and classes releated to Android Framework. It gets the data from viewmodel layer and shows on UI. (**access all the modules**)
-* **data** - The data layer implements the repository interface that the domain layer defines. This layer provide a single source of truth for data. (Kotlin module that **can only access domain module**)
-* **domain** - The domain layer contains the UseCases that encapsulate a single and very specific task that can be performed. This task is part of the business logic of the application. (Kotlin module that **cannot access any other module**)
-* **local** - Handles data interacting with the local storing (Room DB). (**can only access data module**)
-* **presentation (Not Included here in this repo)** - MVVM with ViewModels exposing StateFlow that the UI consume. The ViewModel does not know anything about it's consumers. (Android module that **can only access domain module**)
-I Included my viewmodel and it is mapper it is in the ui module.
+* **ui** - This module uses all the components and classes related to the Android framework to display data from the ViewModel layer on the UI.
+* **data** - This Kotlin module implements the repository interface defined in the domain layer, providing a single source of truth for data. It can only access the domain module.
+* **domain** - This Kotlin module contains UseCases that encapsulate a single, specific task that is part of the application's business logic. It cannot access any other module.
+* **local** - This module handles data interaction with the local storage (Room DB).
+* **presentation - This Android module uses MVVM with ViewModels exposing StateFlow that the UI consumes. The ViewModel does not know anything about its consumers. It can only access the domain module. (Note: this module is not included in this repo). I Included my viewmodel and it is mapper it is in the ui module.
 
 
 <img src="https://user-images.githubusercontent.com/63272288/224540081-69478b9d-7b3c-4225-beff-94e9f9ce64bc.jpg" width="600" />
