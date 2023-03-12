@@ -13,8 +13,8 @@ android {
         applicationId "com.moataz.mawaqeet"
         minSdk 24
         targetSdk 33
-        versionCode 6
-        versionName "1.1.0"
+        versionCode 7
+        versionName "1.1.1"
 
         multiDexEnabled true  // to fix error "cannot fit requested classes in a single dex file"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
