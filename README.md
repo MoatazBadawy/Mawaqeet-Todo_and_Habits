@@ -30,7 +30,8 @@ This project is Follow Clean Architecture Structure and MVVM. I Found Most of pe
 * **data** - The data layer implements the repository interface that the domain layer defines. This layer provide a single source of truth for data. (Kotlin module that **can only access domain module**)
 * **domain** - The domain layer contains the UseCases that encapsulate a single and very specific task that can be performed. This task is part of the business logic of the application. (Kotlin module that **cannot access any other module**)
 * **local** - Handles data interacting with the local storing (Room DB). (**can only access data module**)
-* **presentation (Not Include here)** - MVVM with ViewModels exposing StateFlow that the UI consume. The ViewModel does not know anything about it's consumers. (Android module that **can only access domain module**)
+* **presentation (Not Included here in this repo)** - MVVM with ViewModels exposing StateFlow that the UI consume. The ViewModel does not know anything about it's consumers. (Android module that **can only access domain module**)
+I Included my viewmodel and it is mapper it is in the ui module.
 
 
 <img src="https://user-images.githubusercontent.com/63272288/224540081-69478b9d-7b3c-4225-beff-94e9f9ce64bc.jpg" width="600" />
