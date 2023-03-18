@@ -28,9 +28,9 @@ This project follows the Clean Architecture structure and MVVM. The domain layer
 * **Core** - This module handles data interaction with the local storage (Room DB).
 * **data** - This Kotlin module implements the repository interface defined in the domain layer, providing a single source of truth for data. It can only access the domain module.
 * **domain** - This Kotlin module contains UseCases that encapsulate a single, specific task that is part of the application's business logic. It cannot access any other module.
-* **ui** - This module uses all the components and classes related to the Android framework to display data from the ViewModel layer on the UI "in our project we included the viewmodel and fragments in this module".
-* **presentation** - This Android module uses MVVM with ViewModels exposing StateFlow that the UI consumes. The ViewModel does not know anything about its consumers. It can only access the domain module. (Note: this module is not included in this repo). I Included my viewmodel and it is mapper it is in the ui module as we said.
-* **App** - This module handles the DI(Dependency injection) and other app components.
+* **presentation** - This Android module uses MVVM with ViewModels exposing StateFlow that the UI consumes. The ViewModel does not know anything about its consumers. It can only access the domain module. (Note: this module is not included in this repo). (I Included my viewmodel and it is mapper in the ui module).
+* **ui** - This module uses all the components and classes related to the Android framework to display data from the ViewModel layer on the UI "in our project we included the viewmodel in this module and we didn't used the presentation module so our ui have 3 layers, our viewmodel that exposing StateFlow and it is mapper, our uistate layer, and our view layer that has the fragments that interact with the viewmodel".
+* **App** - This module handles the DI(Dependency injection) and other app components like Notifications and MainActivity.
 
 
 <img src="https://user-images.githubusercontent.com/63272288/224540081-69478b9d-7b3c-4225-beff-94e9f9ce64bc.jpg" width="600" />
