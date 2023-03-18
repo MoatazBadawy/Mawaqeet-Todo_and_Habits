@@ -36,7 +36,7 @@ This project follows the Clean Architecture structure and MVVM. The domain layer
 <img src="https://user-images.githubusercontent.com/63272288/224540081-69478b9d-7b3c-4225-beff-94e9f9ce64bc.jpg" width="600" />
 
 ## Data and Dependenciy Flow:
-This illustration from the clean architecture book shows the dependencies between the layers in a project and the way data flows between them.
+This illustration from the clean architecture book shows the dependencies between the layers in a project and the way data flows between them. (our app use the same thing).
 
 
 <img src="https://user-images.githubusercontent.com/63272288/224540200-813c1fd2-1416-4f2a-b404-ac9dc93b655f.jpg" width="600" />
