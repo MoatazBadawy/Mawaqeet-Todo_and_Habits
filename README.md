@@ -60,7 +60,7 @@ This illustration from the clean architecture book shows the dependencies betwee
 
 ## TODO
 - [X] Habits Screen
-- [X] Ktlint or Detekt
+- [ ] Ktlint or Detekt
 - [ ] Todo Screen
 - [ ] Use Jetpack Compose
 
