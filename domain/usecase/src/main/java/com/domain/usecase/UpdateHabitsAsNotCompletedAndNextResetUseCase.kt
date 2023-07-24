@@ -5,7 +5,7 @@ import java.util.*
 import javax.inject.Inject
 
 class UpdateHabitsAsNotCompletedAndNextResetUseCase @Inject constructor(
-    private val repository: HabitRepository
+    private val repository: HabitRepository,
 ) {
     suspend operator fun invoke() {
         val currentTime = getCurrentTime()
@@ -15,7 +15,7 @@ class UpdateHabitsAsNotCompletedAndNextResetUseCase @Inject constructor(
                 habitEntity.nextResetDate.before(currentTime)
             }.map { habitEntity ->
                 habitEntity.copy(isCompleted = false, nextResetDate = nextResetTime)
-            }
+            },
         )
     }
 

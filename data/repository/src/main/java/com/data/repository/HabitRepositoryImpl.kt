@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class HabitRepositoryImpl @Inject constructor(
-    private val dao: HabitDao
+    private val dao: HabitDao,
 ) : HabitRepository {
 
     override suspend fun insertHabit(habit: HabitEntity) {
@@ -19,7 +19,7 @@ class HabitRepositoryImpl @Inject constructor(
     }
 
     override fun getAllHabitsByType(
-        habitType: String
+        habitType: String,
     ): Flow<List<HabitEntity>> {
         return dao.getAllHabitsByType(habitType)
     }
