@@ -10,6 +10,6 @@ import com.moataz.todos.data.local.utils.EntityConstant.TODOS_TABLE
 data class TodoEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val name: String,
+    val title: String,
     val isCompleted: Boolean,
 )

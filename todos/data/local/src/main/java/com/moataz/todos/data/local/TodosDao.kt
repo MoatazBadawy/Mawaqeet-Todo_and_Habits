@@ -15,8 +15,8 @@ interface TodosDao {
     @Query("SELECT * FROM TODOS_TABLE ORDER BY isCompleted ASC")
     suspend fun getAllTodos(): Flow<List<TodoEntity>>
 
-    @Query("UPDATE TODOS_TABLE SET name = :name WHERE id = :id")
-    suspend fun updateTodoTitle(id: Long, name: String)
+    @Query("UPDATE TODOS_TABLE SET title = :title WHERE id = :id")
+    suspend fun updateTodoTitle(id: Long, title: String)
 
     @Query("UPDATE TODOS_TABLE SET isCompleted = :isCompleted WHERE id = :id")
     suspend fun updateTodoCompleted(id: Long, isCompleted: Boolean)
