@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.moataz.habits.data.local.HabitEntity
+import com.moataz.todos.data.local.TodoEntity
 
 @Database(
     entities = [
