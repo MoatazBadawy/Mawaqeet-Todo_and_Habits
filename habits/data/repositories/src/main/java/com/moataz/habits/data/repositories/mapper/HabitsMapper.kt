@@ -4,7 +4,7 @@ import com.moataz.habits.data.local.HabitEntity
 import com.moataz.habits.domain.entities.Habit
 
 internal fun Habit.toHabitEntity(): HabitEntity {
-    return HabitEntity(id, name, type, isCompleted)
+    return HabitEntity(id, name, type, isCompleted, nextResetDate)
 }
 
 internal fun List<Habit>.toHabitsEntities(): List<HabitEntity> {
@@ -12,7 +12,7 @@ internal fun List<Habit>.toHabitsEntities(): List<HabitEntity> {
 }
 
 internal fun HabitEntity.toHabit(): Habit {
-    return Habit(id, name, type, isCompleted)
+    return Habit(id, name, type, isCompleted, nextResetDate)
 }
 
 internal fun List<HabitEntity>.toHabits(): List<Habit> {
