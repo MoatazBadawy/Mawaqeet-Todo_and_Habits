@@ -14,10 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Mawaqeet"
 include ':app'
-include ':domain:repository'
-include ':domain:model'
-include ':domain:mapper'
-include ':domain:usecase'
 include ':ui:view'
 include ':ui:viewmodel'
 include ':ui:mapper'
