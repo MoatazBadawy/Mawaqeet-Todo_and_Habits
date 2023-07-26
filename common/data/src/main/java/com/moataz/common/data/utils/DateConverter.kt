@@ -1,4 +1,4 @@
-package com.moataz.common.data
+package com.moataz.common.data.utils
 
 import androidx.room.TypeConverter
 import java.util.Date
