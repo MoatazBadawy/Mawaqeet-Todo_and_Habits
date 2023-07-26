@@ -4,7 +4,7 @@ buildscript {
         hilt_version = '2.45'
         dagger_version = '2.45'
         room_version = "2.5.2"
-        coroutines_version = "1.6.0"
+        coroutines_version = "1.7.3"
         kotlin_version = "1.8.10"
     }
     repositories {
