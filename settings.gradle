@@ -15,9 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "Mawaqeet"
 include ':app'
 include ':ui:view'
-include ':ui:viewmodel'
-include ':ui:mapper'
-include ':ui:uistate'
 include ':common:data'
 include ':habits:data:local'
 include ':habits:data:repositories'
