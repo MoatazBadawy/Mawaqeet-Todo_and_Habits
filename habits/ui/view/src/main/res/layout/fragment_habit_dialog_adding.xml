@@ -6,11 +6,11 @@
 
         <variable
             name="habitType"
-            type="com.moataz.habits.ui.viewmodel.utils.HabitType" />
+            type="com.moataz.todos.ui.viewmodel.utils.HabitType" />
 
         <variable
             name="viewModel"
-            type="com.moataz.habits.ui.viewmodel.HabitAddingViewModel" />
+            type="com.moataz.todos.ui.viewmodel.HabitAddingViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

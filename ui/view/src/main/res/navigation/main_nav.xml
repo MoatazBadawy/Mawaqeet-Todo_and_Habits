@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/habits_fragment"
-        android:name="com.moataz.habits.ui.view.screen.fragment.HabitsFragment"
+        android:name="com.moataz.todos.ui.view.screen.fragment.HabitsFragment"
         android:label="habits_fragment"
         tools:layout="@layout/fragment_habit">
         <action
@@ -19,13 +19,13 @@
     </fragment>
     <dialog
         android:id="@+id/habitAdditionDialog"
-        android:name="com.moataz.habits.ui.view.screen.dialog.HabitAddingDialog"
+        android:name="com.moataz.todos.ui.view.screen.dialog.HabitAddingDialog"
         android:label="HabitAdditionDialog"
         tools:layout="@layout/fragment_habit_dialog_adding" />
 
     <dialog
         android:id="@+id/habitEditingDialog"
-        android:name="com.moataz.habits.ui.view.screen.dialog.HabitEditingDialog"
+        android:name="com.moataz.todos.ui.view.screen.dialog.HabitEditingDialog"
         android:label="HabitEditingDialog"
         tools:layout="@layout/fragment_habit_dialog_editing">
         <argument

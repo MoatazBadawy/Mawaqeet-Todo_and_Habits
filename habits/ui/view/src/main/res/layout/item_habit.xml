@@ -7,11 +7,11 @@
 
         <variable
             name="item"
-            type="com.moataz.habits.ui.viewmodel.models.HabitUI" />
+            type="com.moataz.todos.ui.viewmodel.models.HabitUI" />
 
         <variable
             name="listener"
-            type="com.moataz.habits.ui.viewmodel.HabitsClicksListener" />
+            type="com.moataz.todos.ui.viewmodel.HabitsClicksListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
