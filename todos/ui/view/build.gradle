@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
 }
@@ -58,7 +59,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     // dagger hilt
     implementation 'com.google.dagger:hilt-android:2.45'
-    kapt 'com.google.dagger:hilt-compiler:2.44'
+    ksp 'com.google.dagger:hilt-compiler:2.44'
     // lottie animations
     implementation "com.airbnb.android:lottie:6.0.0"
     implementation project(":todos:ui:viewmodel")
