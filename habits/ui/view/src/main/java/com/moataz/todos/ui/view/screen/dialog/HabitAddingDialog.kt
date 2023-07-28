@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.moataz.todos.ui.view.R
-import com.moataz.todos.ui.view.databinding.FragmentHabitDialogAddingBinding
+import com.moataz.habits.ui.view.R
+import com.moataz.habits.ui.view.databinding.FragmentHabitDialogAddingBinding
 import com.moataz.todos.ui.view.utils.setWidthPercent
 import com.moataz.todos.ui.viewmodel.HabitAddingViewModel
 import dagger.hilt.android.AndroidEntryPoint

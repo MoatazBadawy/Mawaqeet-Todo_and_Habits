@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.moataz.todos.ui.view.R
-import com.moataz.todos.ui.view.databinding.ItemHabitBinding
+import com.moataz.habits.ui.view.R
+import com.moataz.habits.ui.view.databinding.ItemHabitBinding
 import com.moataz.todos.ui.viewmodel.HabitsClicksListener
 import com.moataz.todos.ui.viewmodel.models.HabitUI
 

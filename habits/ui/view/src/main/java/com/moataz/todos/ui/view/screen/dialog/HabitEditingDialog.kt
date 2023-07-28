@@ -11,8 +11,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.moataz.todos.ui.view.R
-import com.moataz.todos.ui.view.databinding.FragmentHabitDialogEditingBinding
+import com.moataz.habits.ui.view.R
+import com.moataz.habits.ui.view.databinding.FragmentHabitDialogEditingBinding
 import com.moataz.todos.ui.view.utils.setWidthPercent
 import com.moataz.todos.ui.viewmodel.HabitEditingViewModel
 import dagger.hilt.android.AndroidEntryPoint

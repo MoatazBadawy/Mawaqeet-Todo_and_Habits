@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.moataz.todos.ui.view.R
+import com.moataz.habits.ui.view.R
+import com.moataz.habits.ui.view.databinding.FragmentHabitBinding
 import com.moataz.todos.ui.view.adapter.HabitsAdapter
-import com.moataz.todos.ui.view.databinding.FragmentHabitBinding
 import com.moataz.todos.ui.viewmodel.HabitsViewModel
 import com.moataz.todos.ui.viewmodel.models.HabitUI
 import dagger.hilt.android.AndroidEntryPoint
