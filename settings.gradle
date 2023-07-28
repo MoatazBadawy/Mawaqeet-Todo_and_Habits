@@ -14,7 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Mawaqeet"
 include ':app'
-include ':ui:view'
 include ':common:data'
 include ':habits:data:local'
 include ':habits:data:repositories'

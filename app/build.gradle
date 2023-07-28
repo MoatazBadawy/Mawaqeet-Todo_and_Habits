@@ -70,8 +70,6 @@ dependencies {
     // dagger hilt
     implementation 'com.google.dagger:hilt-android:2.44'
     kapt 'com.google.dagger:hilt-compiler:2.44'
-    // Ui view
-    implementation project(":ui:view")
     // room database
     implementation "androidx.room:room-runtime:2.5.0"
     implementation "androidx.room:room-ktx:2.5.0"
