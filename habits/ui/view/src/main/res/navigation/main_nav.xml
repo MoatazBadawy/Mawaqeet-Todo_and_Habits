@@ -29,7 +29,7 @@
         android:label="HabitEditingDialog"
         tools:layout="@layout/fragment_habit_dialog_editing">
         <argument
-            android:name="habitUIState"
-            app:argType="com.ui.uistate.HabitUIState" />
+            android:name="habitUI"
+            app:argType="com.moataz.habits.ui.viewmodel.models.HabitUI" />
     </dialog>
 </navigation>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="habits">عادات</string>
+    <string name="add_new_habit">إضافة عادة جديدة</string>
+    <string name="new_habit">عادة جديدة</string>
+    <string name="habit_name_error_message">لايمكن ترك العادة فارغة</string>
+    <string name="habit_name">إسم العادة</string>
+    <string name="add">إضافة</string>
+    <string name="cancel">إلغاء</string>
+    <string name="delete_habit">حذف</string>
+    <string name="update_habit">تحديث</string>
+    <string name="edit_habit">تعديل العادة</string>
+    <string name="spirituality_chip">روحية</string>
+    <string name="personality_chip">شخصية</string>
+    <string name="mental_chip">عقلية</string>
+    <string name="process_chip">عملية</string>
+    <string name="physical_chip">بدنية</string>
+    <string name="polite_chip">تهذيبية</string>
+    <string name="change_habits_display">تغيير من تصاعدي إلى تنازلي أو العكس</string>
+    <string name="mentality_chip">عقلية</string>
+</resources>
