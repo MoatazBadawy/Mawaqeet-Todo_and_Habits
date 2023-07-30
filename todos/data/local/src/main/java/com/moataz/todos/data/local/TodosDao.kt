@@ -13,7 +13,7 @@ interface TodosDao {
     suspend fun deleteTodo(id: Long)
 
     @Query("SELECT * FROM TODOS_TABLE ORDER BY isCompleted ASC")
-    suspend fun getAllTodos(): Flow<List<TodoEntity>>
+    fun getAllTodos(): Flow<List<TodoEntity>>
 
     @Query("UPDATE TODOS_TABLE SET title = :title WHERE id = :id")
     suspend fun updateTodoTitle(id: Long, title: String)

@@ -29,5 +29,5 @@ object MawaqeetDatabaseFactory {
         context,
         MawaqeetDatabase::class.java,
         "mawaqeet.db",
-    ).build()
+    ).createFromAsset("database/mawaqeet.db").build()
 }
