@@ -1,7 +1,7 @@
 package com.moataz.mawaqeet.components.notification
 
 import android.annotation.SuppressLint
-import android.app.*
+import android.app.* // ktlint-disable no-wildcard-imports
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -31,7 +31,7 @@ class HabitAlertMorningNotification : BroadcastReceiver() {
             // Get the PendingIntent containing the entire back stack
             getPendingIntent(
                 0,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )
         }
 
@@ -60,7 +60,7 @@ class HabitAlertMorningNotification : BroadcastReceiver() {
             val channel = NotificationChannel(
                 channelId,
                 "Channel_ALERT_CHANNEL_ID",
-                NotificationManager.IMPORTANCE_HIGH
+                NotificationManager.IMPORTANCE_HIGH,
             )
             channel.enableLights(true)
             channel.lightColor = Color.WHITE
@@ -88,15 +88,15 @@ class HabitAlertMorningNotification : BroadcastReceiver() {
                     context,
                     0,
                     notificationIntent,
-                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
                 )
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 cal.timeInMillis,
                 (24 * 60 * 60 * 1000).toLong(),
-                broadcast
-            ) //Repeat every 24 h
+                broadcast,
+            ) // Repeat every 24 h
         }
     }
 }
