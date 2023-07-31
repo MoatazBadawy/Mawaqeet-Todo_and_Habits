@@ -4,4 +4,6 @@
     <string name="morning_notification_description">صباح التغيير والتفاؤل، قم ببدء صباحك بعاداتك اليومية لتحرز يوما جديدا في رحلة تغييرك لتصبح إنسانا أفضل</string>
     <string name="night_notification_title">حان وقت النوم</string>
     <string name="night_notification_description">إنتهى اليوم وحان وقت الخلود إلى النوم، لا بأس إن لم تنجز عاداتك اليومية لديك غدا يوما جديدا لتحرز به تقدم أفضل، وإن كنت قد أنجزت جزء كبيرا من عاداتك فهنيئا لك، لا تنسى قيام الليل وأن تضبط منبه هاتفك على صلاة الفجر فهما عمود أساس في رحلة تغييرك، تصبح على خير ونراك غدا بإذن الرحمن</string>
+    <string name="menu_habits">عادات</string>
+    <string name="menu_todos">مهام</string>
 </resources>

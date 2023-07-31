@@ -1,6 +1,8 @@
 package com.moataz.mawaqeet.main
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,7 +10,9 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
@@ -30,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         initView(window)
         initNavigationHosting()
         initNotification()
+        initBottomNavigation()
         displayAppRating()
         inAppUpdate()
     }
@@ -43,10 +48,16 @@ class MainActivity : AppCompatActivity() {
         return window
     }
 
-    private fun initNavigationHosting() {
+    private fun initNavigationHosting(): NavController {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navHostFragment.navController
+        return navHostFragment.navController
+    }
+
+    private fun initBottomNavigation() {
+        binding.bottomNavView.setupWithNavController(initNavigationHosting())
+        binding.bottomNavView.itemRippleColor =
+            ColorStateList.valueOf(Color.parseColor("#F8F8F8"))
     }
 
     private fun initNotification() {
@@ -69,15 +80,15 @@ class MainActivity : AppCompatActivity() {
         val appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                && (appUpdateInfo.clientVersionStalenessDays() ?: -1) >= 3
-                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
+                (appUpdateInfo.clientVersionStalenessDays() ?: -1) >= 3 &&
+                appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
             ) {
                 appUpdateManager.startUpdateFlowForResult(
                     appUpdateInfo,
                     AppUpdateType.IMMEDIATE,
                     this,
-                    0
+                    0,
                 )
             }
         }

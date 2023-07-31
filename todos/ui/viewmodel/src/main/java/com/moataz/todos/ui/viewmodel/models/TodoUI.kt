@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TodoUI(
+    val id: Long = 0,
     val title: String = "",
     val isCompleted: Boolean = false,
 ) : Parcelable

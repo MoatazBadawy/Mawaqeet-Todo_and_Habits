@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/todos_nav"
+    app:startDestination="@id/todos_fragment">
+
+    <fragment
+        android:id="@+id/todos_fragment"
+        android:name="com.moataz.todos.ui.view.screen.fragment.TodosFragment"
+        android:label="todos_fragment"
+        tools:layout="@layout/fragment_todos">
+        <action
+            android:id="@+id/action_todos_fragment_to_todosAdditionDialog"
+            app:destination="@id/todoAdditionDialog" />
+        <action
+            android:id="@+id/action_todos_fragment_to_todoEditingDialog"
+            app:destination="@id/todoEditingDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/todoAdditionDialog"
+        android:name="com.moataz.todos.ui.view.screen.dialog.TodoAddingDialog"
+        android:label="TodoAdditionDialog"
+        tools:layout="@layout/fragment_todo_dialog_adding" />
+
+    <dialog
+        android:id="@+id/todoEditingDialog"
+        android:name="com.moataz.todos.ui.view.screen.dialog.TodoEditingDialog"
+        android:label="TodoEditingDialog"
+        tools:layout="@layout/fragment_todo_dialog_editing">
+        <argument
+            android:name="todoUI"
+            app:argType="com.moataz.todos.ui.viewmodel.models.TodoUI" />
+    </dialog>
+</navigation>

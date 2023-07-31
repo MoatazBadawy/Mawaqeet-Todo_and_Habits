@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.moataz.todos.ui.viewmodel.HabitEditingViewModel" />
+            type="com.moataz.habits.ui.viewmodel.HabitEditingViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

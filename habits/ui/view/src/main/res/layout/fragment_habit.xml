@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.moataz.todos.ui.viewmodel.HabitsViewModel" />
+            type="com.moataz.habits.ui.viewmodel.HabitsViewModel" />
 
         <variable
             name="habitType"
-            type="com.moataz.todos.ui.viewmodel.utils.HabitType" />
+            type="com.moataz.habits.ui.viewmodel.utils.HabitType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
