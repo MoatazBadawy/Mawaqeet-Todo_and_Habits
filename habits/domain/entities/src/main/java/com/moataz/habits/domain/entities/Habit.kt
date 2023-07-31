@@ -4,7 +4,7 @@ import com.moataz.habits.domain.entities.utils.HabitsConstants.NEXT_RESET_DATE_H
 import java.util.Date
 
 data class Habit(
-    val id: Long = 0,
+    val id: Long,
     val name: String,
     val type: String,
     val isCompleted: Boolean,

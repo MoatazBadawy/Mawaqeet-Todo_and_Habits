@@ -9,19 +9,19 @@ interface HabitsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHabit(habitEntity: HabitEntity)
 
-    @Query("DELETE FROM HABITS_TABLE WHERE id = :id")
+    @Query("DELETE FROM HABIT_TABLE WHERE id = :id")
     suspend fun deleteHabit(id: Long)
 
-    @Query("SELECT * FROM HABITS_TABLE WHERE type = :type ORDER BY isCompleted ASC")
+    @Query("SELECT * FROM HABIT_TABLE WHERE type = :type ORDER BY isCompleted ASC")
     fun getAllHabitsByType(type: String): Flow<List<HabitEntity>>
 
-    @Query("SELECT * FROM HABITS_TABLE")
+    @Query("SELECT * FROM HABIT_TABLE")
     suspend fun getAllHabits(): List<HabitEntity>
 
-    @Query("UPDATE HABITS_TABLE SET name = :name WHERE id = :id")
+    @Query("UPDATE HABIT_TABLE SET name = :name WHERE id = :id")
     suspend fun updateHabitName(id: Long, name: String)
 
-    @Query("UPDATE HABITS_TABLE SET isCompleted = :isCompleted WHERE id = :id")
+    @Query("UPDATE HABIT_TABLE SET isCompleted = :isCompleted WHERE id = :id")
     suspend fun updateHabitCompleted(id: Long, isCompleted: Boolean)
 
     @Update

@@ -10,6 +10,7 @@ class InsertHabitUseCase @Inject constructor(
     suspend operator fun invoke(habitName: String, habitType: String) {
         return habitsRepository.insertHabit(
             Habit(
+                id = 0,
                 name = habitName,
                 type = habitType,
                 isCompleted = false,
