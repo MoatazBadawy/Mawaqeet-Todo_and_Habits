@@ -3,7 +3,7 @@ package com.moataz.habits.data.local.utils
 import java.util.*
 
 object EntityConstant {
-    const val HABITS_TABLE = "HABITS_TABLE"
+    const val HABIT_TABLE = "HABIT_TABLE"
 
     val NEXT_RESET_DATE_HABIT: Date = Calendar.getInstance().apply {
         add(Calendar.DAY_OF_YEAR, 1)
