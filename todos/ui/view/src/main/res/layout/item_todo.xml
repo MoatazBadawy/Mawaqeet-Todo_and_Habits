@@ -55,7 +55,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/check_box"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="عاوز أشتغل في شركة، عاوزين نتجوز" />
+                    tools:text="مرة واحد نام متاخر لقى الحلم بدأ" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/check_box"
