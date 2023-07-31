@@ -25,11 +25,11 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="#F8F8F8"
             app:itemIconSize="24dp"
             app:itemIconTint="@color/bnv_tab_item_foreground"
-            app:labelVisibilityMode="labeled"
+            app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
