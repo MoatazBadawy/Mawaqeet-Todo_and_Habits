@@ -13,9 +13,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.44'
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.45'
         classpath 'com.google.gms:google-services:4.3.15'  // Google Services plugin
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.6.0")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -30,6 +30,6 @@ plugins {
     id 'com.google.devtools.ksp' version '1.8.21-1.0.11' apply false
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }
