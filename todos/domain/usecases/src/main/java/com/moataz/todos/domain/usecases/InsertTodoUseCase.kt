@@ -10,6 +10,7 @@ class InsertTodoUseCase @Inject constructor(
     suspend operator fun invoke(todoTitle: String) {
         return repository.insertTodo(
             Todo(
+                id = 0,
                 title = todoTitle,
                 isCompleted = false,
             ),
