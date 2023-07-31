@@ -1,8 +1,8 @@
 package com.moataz.mawaqeet.di
 
-import com.moataz.todos.data.repositories.HabitsRepositoryImpl
+import com.moataz.habits.data.repositories.HabitsRepositoryImpl
+import com.moataz.habits.domain.repository.HabitsRepository
 import com.moataz.todos.data.repositories.TodosRepositoryImpl
-import com.moataz.todos.domain.repository.HabitsRepository
 import com.moataz.todos.domain.repository.TodosRepository
 import dagger.Binds
 import dagger.Module

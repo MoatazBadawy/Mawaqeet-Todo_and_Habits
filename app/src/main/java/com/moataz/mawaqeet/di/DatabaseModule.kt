@@ -3,7 +3,7 @@ package com.moataz.mawaqeet.di
 import android.content.Context
 import com.moataz.common.data.MawaqeetDatabase
 import com.moataz.common.data.MawaqeetDatabaseFactory
-import com.moataz.todos.data.local.HabitsDao
+import com.moataz.habits.data.local.HabitsDao
 import com.moataz.todos.data.local.TodosDao
 import dagger.Module
 import dagger.Provides
