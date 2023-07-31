@@ -14,7 +14,7 @@ android {
         applicationId "com.moataz.mawaqeet"
         minSdk 24
         targetSdk 33
-        versionCode 8
+        versionCode 9
         versionName "1.2.0"
 
         multiDexEnabled true  // to fix error "cannot fit requested classes in a single dex file"
