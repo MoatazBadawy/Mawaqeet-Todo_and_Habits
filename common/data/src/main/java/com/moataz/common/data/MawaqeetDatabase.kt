@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.moataz.common.data.utils.DateConverter
+import com.moataz.common.data.utils.MIGRATION_NEW_VERSION
 import com.moataz.habits.data.local.HabitEntity
 import com.moataz.habits.data.local.HabitsDao
 import com.moataz.todos.data.local.TodoEntity
@@ -29,5 +30,7 @@ object MawaqeetDatabaseFactory {
         context,
         MawaqeetDatabase::class.java,
         "mawaqeet.db",
-    ).createFromAsset("database/mawaqeet.db").build()
+    ).createFromAsset("database/mawaqeet.db")
+        .addMigrations(MIGRATION_NEW_VERSION)
+        .build()
 }
