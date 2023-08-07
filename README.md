@@ -2,70 +2,112 @@
 
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
-  <a href="https://android-arsenal.com/api?level=23"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
-  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.4.xxx-blue"/></a>
+  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat"/></a>
+  <a href="https://kotlinlang.org"><img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-1.8.xxx-a97bff"/></a>
+  <img alt="Clean Architecture" src="https://img.shields.io/badge/Clean-Architecture-white"/>
   <img alt="MVVM" src="https://img.shields.io/badge/MVVM-Architecture-orange"/>
 </p>
 
-![](https://user-images.githubusercontent.com/63272288/223731766-bc007d9b-b386-4587-9c26-654d850c5d21.png)
+<p align="center">  
+📝 Mawaqeet: To-do and Habits app. Is a modern Android app with Hilt, Coroutines, Flow, Jetpack (Room, ViewModel), and Material Design based on Clean architecture and MVVM architecture. And also apply Modularization.
+</p>
+</br>
 
-## Overview 
-An app that provides you with the tools and resources to build healthy and positive habits in an efficient and easy way. You will get daily notifications to achieve your goals. Try the app now and embark on the journey of building a healthy and positive life.- A great way to build new habits.
-- Many departments and diverse customs.
-- Choose your favorite section and add habits easily.
-- Daily notifications to remind you of morning and evening habits
+<p align="center">
+<img src="https://user-images.githubusercontent.com/63272288/223731766-bc007d9b-b386-4587-9c26-654d850c5d21.png"/>
+</p>
 
-<a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
-<br />
+## Download
+Go to the [Releases](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/releases) to download the latest APK. <br> 
+Or simply get it from the play store here 👇
 
-## Project Architecture:
+<a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
+
+## App Images
+Habits | Sections | Add habit 
+--- | --- | --- | 
+![](https://i.ibb.co/ZN0N3sY/photo-2023-08-07-02-51-59.jpg) | ![](https://i.ibb.co/M6zT6n1/photo-2023-08-07-02-51-59-2.jpg) | ![](https://i.ibb.co/kJzZn2S/photo-2023-08-07-gf02-51-59.jpg) | 
+
+| Edit habit | To-do | Add to-do
+--- | --- | --- |
+![](https://i.ibb.co/NNyW5nK/photo-2023-08-0ggg7-02-51-59.jpg) | ![](https://i.ibb.co/crzXSRQ/photo-2023-08-07-02ffff-51-59.jpg) | ![](https://i.ibb.co/vZ2GYBr/photo-2023-08-07-02-fefe52-00.jpg)
+
+## How it works
+
+#### Project Architecture
 This project follows the Clean Architecture structure and MVVM. The domain layer contains UseCases that encapsulate a single, specific task that is part of the application's business logic. The data layer implements the repository interface defined in the domain layer, providing a single source of truth for data. The UI layer uses all the components and classes related to the Android framework to get the data from the ViewModel layer and display it on the UI.
 
+<img src="https://koenig-media.raywenderlich.com/uploads/2019/06/Clean-Architecture-graph.png" width="500" />
 
-<img src="https://user-images.githubusercontent.com/63272288/224539374-26ea3e6b-ed81-4700-bbbe-640489aeca38.jpg" width="600" />
+#### Structure (App Modules)
+This project is use modularizing by feature. Every feature has it is one (data - domain - UI)
 
-## App Modules:
-* **Core** - This module handles data interaction with the local storage (Room DB).
-* **data** - This Kotlin module implements the repository interface defined in the domain layer, providing a single source of truth for data. It can only access the domain module.
-* **domain** - This Kotlin module contains UseCases that encapsulate a single, specific task that is part of the application's business logic. It cannot access any other module.
-* **presentation** - This Android module uses MVVM with ViewModels exposing StateFlow that the UI consumes. The ViewModel does not know anything about its consumers. It can only access the domain module. (Note: this module is not included in this repo). (I Included my viewmodel and it is mapper in the ui module).
-* **ui** - This module uses all the components and classes related to the Android framework to display data from the ViewModel layer on the UI "in our project we included the viewmodel in this module and we didn't used the presentation module so our ui have 3 layers, our viewmodel that exposing StateFlow and it is mapper, our uistate layer, and our view layer that has the fragments that interact with the viewmodel".
-* **App** - This module handles the DI(Dependency injection) and other app components like Notifications and MainActivity.
+      + App <- The main module
+      + habits/
+          * data <- implements the repository interface defined in the domain layer
+            - local 
+            - repositories
+          * domain <- contains UseCases that encapsulate the business logic.
+            - entities 
+            - repository
+            - usecases
+          * UI <- uses MVVM with ViewModels exposing StateFlow that the UI consumes.
+              - view
+              - viewmodel
+      + to-do <- Have the same things as habits module
 
+#### Data and Dependenciy Flow:
+This illustration from the clean architecture book shows the dependencies between the layers in an example app and the way data flows between them. (our app uses the same thing).
 
-<img src="https://user-images.githubusercontent.com/63272288/224540081-69478b9d-7b3c-4225-beff-94e9f9ce64bc.jpg" width="600" />
+<img src="https://user-images.githubusercontent.com/63272288/224540200-813c1fd2-1416-4f2a-b404-ac9dc93b655f.jpg" width="500" />
+              
 
-## Data and Dependenciy Flow:
-This illustration from the clean architecture book shows the dependencies between the layers in a project and the way data flows between them. (our app use the same thing).
-
-
-<img src="https://user-images.githubusercontent.com/63272288/224540200-813c1fd2-1416-4f2a-b404-ac9dc93b655f.jpg" width="600" />
-
-
-## Tech stack - Library:
-
-- [Kotlin](https://kotlinlang.org/)
-- [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously
-- [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) - Flow is used to pass (send) a stream of data that can be computed asynchronously
-- [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - for dependency injection.
-- [Kotlin-DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Used to handle gradle dependencies and config versions
-- JetPack
-  - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#:~:text=StateFlow%20is%20a%20state-holder,property%20of%20the%20MutableStateFlow%20class.) - For reactive style programming (from VM to UI). 
-  - [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle) - Used get lifecyle event of an activity or fragment and performs some action in response to change
-  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
-  - [Room](https://developer.android.com/topic/libraries/architecture/room) - Used to create room db and store the data.
+## Tech stack & Open-source libraries
+- Minimum SDK level 24
+- [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
+- Jetpack
+  - Lifecycle: Observe Android lifecycles and handle UI states upon the lifecycle changes.
+  - ViewModel: Manages UI-related data holder and lifecycle aware. Allows data to survive configuration changes such as screen rotations.
+  - StateFlow: For reactive style programming (from VM to UI). 
+  - DataBinding: Binds UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
+  - Room: Constructs Database by providing an abstraction layer over SQLite to allow fluent database access.
+  - [Hilt](https://dagger.dev/hilt/): for dependency injection.
   - [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) - Used to navigate between fragments
-  - [Data Binding](https://developer.android.com/topic/libraries/data-binding) - Used to bind UI components in your XML layouts.
-- [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
+  - [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
+- Architecture
+  - Clean Architecture (Data - Domain - UI)
+  - MVVM Architecture (View - DataBinding - ViewModel - Model)
+  - Repository Pattern
+- [Kotlin-DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Used to handle gradle dependencies and config versions
+- [ksp](https://github.com/google/ksp): Kotlin Symbol Processing API.
 
 ## TODO
 - [X] Habits Screen
+- [X] To-do Screen
 - [ ] Ktlint or Detekt
-- [ ] Todo Screen
 - [ ] Use Jetpack Compose
 
-## Find this repository useful?
-Support it by joining __[stargazers](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/stargazers)__ for this repository. <br>
+## Find this repository useful? :heart:
+Support it by joining __[stargazers](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/stargazers)__ for this repository. :star: <br>
+Also, __[follow me](https://github.com/MoatazBadawy)__ on GitHub for my next creations! 🤩
 
-## Contributions
-If you'd like to contribute, please take a look at the [PRs Welcome](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/labels) label on the issue tracker. For new features, please open an issue to discuss it before beginning implementation.
+## Contributions 🤝
+If you'd like to contribute, please take a look at the [PRs Welcome](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/labels) label on the issue tracker. <br> 
+For new features, please open an issue to discuss it before beginning implementation.
+
+# License
+```xml
+Designed and developed by 2023 Moataz Mohamed
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
