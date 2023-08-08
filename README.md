@@ -24,13 +24,17 @@ Or simply get it from the play store here 👇
 <a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 
 ## App Images
-Habits | Sections | Add habit 
---- | --- | --- | 
-![](https://i.ibb.co/ZN0N3sY/photo-2023-08-07-02-51-59.jpg) | ![](https://i.ibb.co/M6zT6n1/photo-2023-08-07-02-51-59-2.jpg) | ![](https://i.ibb.co/kJzZn2S/photo-2023-08-07-gf02-51-59.jpg) | 
+Habits | Sections  
+--- | --- |
+![](https://i.ibb.co/ZN0N3sY/photo-2023-08-07-02-51-59.jpg) | ![](https://i.ibb.co/M6zT6n1/photo-2023-08-07-02-51-59-2.jpg) |
 
-| Edit habit | To-do | Add to-do
---- | --- | --- |
-![](https://i.ibb.co/NNyW5nK/photo-2023-08-0ggg7-02-51-59.jpg) | ![](https://i.ibb.co/crzXSRQ/photo-2023-08-07-02ffff-51-59.jpg) | ![](https://i.ibb.co/vZ2GYBr/photo-2023-08-07-02-fefe52-00.jpg)
+| Add habit | Edit habit |
+ --- | --- | 
+  ![](https://i.ibb.co/kJzZn2S/photo-2023-08-07-gf02-51-59.jpg) | ![](https://i.ibb.co/NNyW5nK/photo-2023-08-0ggg7-02-51-59.jpg) | 
+  
+ To-do | Add to-do
+--- | --- |
+![](https://i.ibb.co/crzXSRQ/photo-2023-08-07-02ffff-51-59.jpg) | ![](https://i.ibb.co/vZ2GYBr/photo-2023-08-07-02-fefe52-00.jpg)
 
 ## How it works
 
@@ -43,15 +47,17 @@ This project follows the Clean Architecture structure and MVVM. The domain layer
 This project is use modularizing by feature. Every feature has it is one (data - domain - UI)
 
       + App <- The main module
+      + common/ 
+          + data <- The common database(Room) between the features
       + habits/
-          * data <- implements the repository interface defined in the domain layer
+          + data <- implements the repository interface defined in the domain layer
             - local 
             - repositories
-          * domain <- contains UseCases that encapsulate the business logic.
+          + domain <- contains UseCases that encapsulate the business logic.
             - entities 
             - repository
             - usecases
-          * UI <- uses MVVM with ViewModels exposing StateFlow that the UI consumes.
+          + UI <- uses MVVM with ViewModels exposing StateFlow that the UI consumes.
               - view
               - viewmodel
       + to-do <- Have the same things as habits module
