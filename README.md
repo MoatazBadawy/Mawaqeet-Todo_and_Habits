@@ -19,22 +19,18 @@
 
 ## Download
 Go to the [Releases](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/releases) to download the latest APK. <br> 
-Or simply get it from the play store here 👇
+Or simply get it from the Play Store here 👇
 
 <a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 
 ## App Images
-Habits | Sections  
---- | --- |
-![](https://i.ibb.co/ZN0N3sY/photo-2023-08-07-02-51-59.jpg) | ![](https://i.ibb.co/M6zT6n1/photo-2023-08-07-02-51-59-2.jpg) |
+Habits | Sections | Add habit 
+--- | --- | --- |
+![](https://i.ibb.co/ZN0N3sY/photo-2023-08-07-02-51-59.jpg) | ![](https://i.ibb.co/M6zT6n1/photo-2023-08-07-02-51-59-2.jpg) | ![](https://i.ibb.co/kJzZn2S/photo-2023-08-07-gf02-51-59.jpg)
 
-| Add habit | Edit habit |
- --- | --- | 
-  ![](https://i.ibb.co/kJzZn2S/photo-2023-08-07-gf02-51-59.jpg) | ![](https://i.ibb.co/NNyW5nK/photo-2023-08-0ggg7-02-51-59.jpg) | 
-  
- To-do | Add to-do
---- | --- |
-![](https://i.ibb.co/crzXSRQ/photo-2023-08-07-02ffff-51-59.jpg) | ![](https://i.ibb.co/vZ2GYBr/photo-2023-08-07-02-fefe52-00.jpg)
+Edit habit | To-do | Add to-do
+  --- | --- | --- |
+  ![](https://i.ibb.co/NNyW5nK/photo-2023-08-0ggg7-02-51-59.jpg) | ![](https://i.ibb.co/crzXSRQ/photo-2023-08-07-02ffff-51-59.jpg) | ![](https://i.ibb.co/vZ2GYBr/photo-2023-08-07-02-fefe52-00.jpg)
 
 ## How it works
 
@@ -44,7 +40,7 @@ This project follows the Clean Architecture structure and MVVM. The domain layer
 <img src="https://koenig-media.raywenderlich.com/uploads/2019/06/Clean-Architecture-graph.png" width="500" />
 
 #### Structure (App Modules)
-This project is use modularizing by feature. Every feature has it is one (data - domain - UI)
+This project uses modularizing by feature. Every feature has it is one (data - domain - UI)
 
       + App <- The main module
       + common/ 
@@ -73,7 +69,7 @@ This illustration from the clean architecture book shows the dependencies betwee
 - [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
 - Jetpack
   - Lifecycle: Observe Android lifecycles and handle UI states upon the lifecycle changes.
-  - ViewModel: Manages UI-related data holder and lifecycle aware. Allows data to survive configuration changes such as screen rotations.
+  - ViewModel: Manages UI-related data holder and lifecycle awareness. Allows data to survive configuration changes such as screen rotations.
   - StateFlow: For reactive style programming (from VM to UI). 
   - DataBinding: Binds UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
   - Room: Constructs Database by providing an abstraction layer over SQLite to allow fluent database access.
@@ -102,11 +98,11 @@ If you'd like to contribute, please take a look at the [PRs Welcome](https://git
 For new features, please open an issue to discuss it before beginning implementation.
 
 # License
-```xml
+```XML
 Designed and developed by 2023 Moataz Mohamed
 
 Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
+You may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
