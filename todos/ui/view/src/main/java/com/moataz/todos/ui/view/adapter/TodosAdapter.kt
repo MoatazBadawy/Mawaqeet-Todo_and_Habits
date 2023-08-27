@@ -15,15 +15,15 @@ class TodosAdapter(
     private val listeners: TodosClicksListener,
 ) : RecyclerView.Adapter<TodosAdapter.HabitViewHolder>() {
 
-    fun setItems(newItems: List<TodoUI>) {
+    fun setTodos(newTodos: List<TodoUI>) {
         val diffUtilResult =
-            DiffUtil.calculateDiff(TodosDiffUtil(todos, newItems, ::areContentsTheSame))
-        todos = newItems
+            DiffUtil.calculateDiff(TodosDiffUtil(todos, newTodos, ::areContentsTheSame))
+        todos = newTodos
         diffUtilResult.dispatchUpdatesTo(this)
     }
 
-    private fun areContentsTheSame(oldItem: TodoUI, newItem: TodoUI): Boolean {
-        return oldItem == newItem
+    private fun areContentsTheSame(oldTodoItem: TodoUI, newTodoItem: TodoUI): Boolean {
+        return oldTodoItem == newTodoItem
     }
 
     override fun getItemCount(): Int = todos.size

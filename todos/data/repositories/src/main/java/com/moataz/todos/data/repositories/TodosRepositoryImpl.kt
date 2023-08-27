@@ -12,6 +12,7 @@ import javax.inject.Inject
 class TodosRepositoryImpl @Inject constructor(
     private val dao: TodosDao,
 ) : TodosRepository {
+
     override suspend fun insertTodo(todo: Todo) {
         dao.insertTodo(todo.toTodoEntity())
     }
