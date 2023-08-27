@@ -9,13 +9,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.moataz.habits.ui.view.R
 import com.moataz.habits.ui.view.databinding.FragmentHabitDialogEditingBinding
 import com.moataz.habits.ui.view.utils.setWidthPercent
 import com.moataz.habits.ui.viewmodel.HabitEditingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HabitEditingDialog : DialogFragment() {
@@ -44,6 +47,7 @@ class HabitEditingDialog : DialogFragment() {
         setWidthPercent(80)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         this.isCancelable = false
+        observeEvents()
     }
 
     private fun initNavArgs() {
@@ -55,10 +59,12 @@ class HabitEditingDialog : DialogFragment() {
     }
 
     private fun observeEvents() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.isCancelClicked.collect {
-                if (it) {
-                    dismiss()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isCancelClicked.collect {
+                    if (it) {
+                        dismiss()
+                    }
                 }
             }
         }
@@ -67,6 +73,5 @@ class HabitEditingDialog : DialogFragment() {
     override fun onStart() {
         super.onStart()
         initNavArgs()
-        observeEvents()
     }
 }

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.moataz.habits.ui.view.R
 import com.moataz.habits.ui.view.adapter.HabitsAdapter
@@ -56,16 +58,22 @@ class HabitsFragment : Fragment() {
                 habitsAdapter.setItems(habitsMainState.habits)
             }
         }
-        lifecycleScope.launchWhenStarted {
-            viewModel.addHabitClickedEvent.collect {
-                if (it) {
-                    navigateToAddHabitDialog()
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addHabitClickedEvent.collect {
+                    if (it) {
+                        navigateToAddHabitDialog()
+                    }
                 }
             }
         }
-        lifecycleScope.launchWhenStarted {
-            viewModel.editHabitLongClickedEvent.collect {
-                navigateToHabitEditingDialog(it)
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.editHabitLongClickedEvent.collect {
+                    navigateToHabitEditingDialog(it)
+                }
             }
         }
     }
