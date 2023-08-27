@@ -9,12 +9,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.databinding.FragmentTodoDialogAddingBinding
 import com.moataz.todos.ui.view.utils.setWidthPercent
 import com.moataz.todos.ui.viewmodel.TodoAddingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TodoAddingDialog : DialogFragment() {
@@ -42,20 +45,18 @@ class TodoAddingDialog : DialogFragment() {
         setWidthPercent(80)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         this.isCancelable = false
+        observeEvents()
     }
 
     private fun observeEvents() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.isCancelClicked.collect {
-                if (it) {
-                    dismiss()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isCancelClicked.collect {
+                    if (it) {
+                        dismiss()
+                    }
                 }
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        observeEvents()
     }
 }

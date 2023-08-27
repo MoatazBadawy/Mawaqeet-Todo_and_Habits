@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.adapter.TodosAdapter
@@ -53,19 +55,25 @@ class TodosFragment : Fragment() {
     private fun observeEvents() {
         lifecycleScope.launch {
             viewModel.todosUIState.collect { todosUIState ->
-                todosAdapter.setItems(todosUIState.todos)
+                todosAdapter.setTodos(todosUIState.todos)
             }
         }
-        lifecycleScope.launchWhenStarted {
-            viewModel.addTodoClickedEvent.collect {
-                if (it) {
-                    navigateToAddHabitDialog()
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addTodoClickedEvent.collect {
+                    if (it) {
+                        navigateToAddHabitDialog()
+                    }
                 }
             }
         }
-        lifecycleScope.launchWhenStarted {
-            viewModel.editTodoLongClickedEvent.collect {
-                navigateToHabitEditingDialog(it)
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.editTodoLongClickedEvent.collect {
+                    navigateToHabitEditingDialog(it)
+                }
             }
         }
     }

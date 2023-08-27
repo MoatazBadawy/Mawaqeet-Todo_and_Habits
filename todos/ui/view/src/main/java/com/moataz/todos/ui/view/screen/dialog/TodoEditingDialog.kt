@@ -9,13 +9,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.databinding.FragmentTodoDialogEditingBinding
 import com.moataz.todos.ui.view.utils.setWidthPercent
 import com.moataz.todos.ui.viewmodel.TodoEditingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TodoEditingDialog : DialogFragment() {
@@ -44,6 +47,7 @@ class TodoEditingDialog : DialogFragment() {
         setWidthPercent(80)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         this.isCancelable = false
+        observeEvents()
     }
 
     private fun initNavArgs() {
@@ -55,10 +59,12 @@ class TodoEditingDialog : DialogFragment() {
     }
 
     private fun observeEvents() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.isCancelClicked.collect {
-                if (it) {
-                    dismiss()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isCancelClicked.collect {
+                    if (it) {
+                        dismiss()
+                    }
                 }
             }
         }
@@ -67,6 +73,5 @@ class TodoEditingDialog : DialogFragment() {
     override fun onStart() {
         super.onStart()
         initNavArgs()
-        observeEvents()
     }
 }
