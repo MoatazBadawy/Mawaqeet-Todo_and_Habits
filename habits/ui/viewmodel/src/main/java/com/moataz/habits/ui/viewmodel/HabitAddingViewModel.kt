@@ -29,12 +29,12 @@ class HabitAddingViewModel @Inject constructor(
 
     private fun insertHabit() {
         viewModelScope.launch {
-            insertHabitUseCase(habitName.value, habitType.value.name)
+            insertHabitUseCase(habitName.value, habitType.value.pathName)
             clearFields()
         }
     }
 
-    fun addHabitDialogClicked() {
+    fun onAddHabitClicked() {
         if (habitName.value.isNotEmpty()) {
             insertHabit()
             onCloseDialogClick()

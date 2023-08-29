@@ -139,7 +139,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.addHabitDialogClicked()}"
+                android:onClick="@{() -> viewModel.onAddHabitClicked()}"
                 android:text="@string/add"
                 android:textAllCaps="false"
                 android:textColor="@color/purple"
