@@ -1,8 +1,11 @@
 package com.moataz.habits.data.local
 
-import androidx.room.* // ktlint-disable no-wildcard-imports
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
-import java.util.*
 
 @Dao
 interface HabitsDao {

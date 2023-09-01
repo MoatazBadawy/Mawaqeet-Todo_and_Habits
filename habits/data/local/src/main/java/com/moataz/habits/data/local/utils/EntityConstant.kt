@@ -1,6 +1,7 @@
 package com.moataz.habits.data.local.utils
 
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 
 object EntityConstant {
     const val HABIT_TABLE = "HABIT_TABLE"
