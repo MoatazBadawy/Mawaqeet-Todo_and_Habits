@@ -62,19 +62,36 @@ class HabitsViewModel @Inject constructor(
                         },
                     )
                 }
+            }.runCatching {
+                _habitsUIState.update { habitsMainUiState ->
+                    habitsMainUiState.copy(
+                        isLoading = false,
+                        isSuccessful = false,
+                        isError = true,
+                        habits = emptyList(),
+                    )
+                }
             }
         }
     }
 
     override fun updateHabitCompleted(habit: HabitUI, isCompleted: Boolean) {
         viewModelScope.launch {
-            updateHabitCompletedUseCase(habit.toHabit(), isCompleted)
+            try {
+                updateHabitCompletedUseCase(habit.toHabit(), isCompleted)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
     private fun updateHabitsAsNotCompletedEveryDayAtSpecificTime() {
         viewModelScope.launch {
-            updateHabitsAsNotCompletedAndNextResetUseCase()
+            try {
+                updateHabitsAsNotCompletedAndNextResetUseCase()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
