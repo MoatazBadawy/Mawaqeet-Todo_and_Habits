@@ -1,9 +1,8 @@
 package com.moataz.habits.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavArgs
 import com.moataz.habits.domain.usecases.DeleteHabitUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitNameUseCase
 import com.moataz.habits.ui.viewmodel.mapper.toHabit
@@ -19,18 +18,26 @@ import javax.inject.Inject
 class HabitEditingViewModel @Inject constructor(
     private val updateHabitNameUseCase: UpdateHabitNameUseCase,
     private val deleteHabitUseCase: DeleteHabitUseCase,
+    state: SavedStateHandle,
 ) : ViewModel() {
 
-    private val _navArgs = MutableLiveData<NavArgs>()
+    private val _habitArgs: HabitUI? = state["habitUI"]
 
-    val habit = MutableStateFlow(HabitUI())
+    private val habit = MutableStateFlow(HabitUI())
     val habitName = MutableStateFlow("")
 
     private val _isCancelClicked = Channel<Boolean>()
     val isCancelClicked get() = _isCancelClicked.receiveAsFlow()
 
-    fun setupNavArgs(navArgs: NavArgs) {
-        _navArgs.postValue(navArgs)
+    init {
+        initializeNavigationArguments()
+    }
+
+    private fun initializeNavigationArguments() {
+        _habitArgs?.let { receivedHabit ->
+            habit.value = receivedHabit
+            habitName.value = receivedHabit.name
+        }
     }
 
     private fun updateHabitByName() {
@@ -42,20 +49,16 @@ class HabitEditingViewModel @Inject constructor(
     private fun deleteHabit() {
         viewModelScope.launch {
             deleteHabitUseCase(habit.value.toHabit())
-            clearFields()
-            onCloseDialogClick()
         }
     }
 
     fun onUpdateHabitClicked() {
         updateHabitByName()
-        clearFields()
         onCloseDialogClick()
     }
 
     fun onDeleteHabitClicked() {
         deleteHabit()
-        clearFields()
         onCloseDialogClick()
     }
 
@@ -63,9 +66,5 @@ class HabitEditingViewModel @Inject constructor(
         viewModelScope.launch {
             _isCancelClicked.send(true)
         }
-    }
-
-    private fun clearFields() {
-        habitName.value = ""
     }
 }

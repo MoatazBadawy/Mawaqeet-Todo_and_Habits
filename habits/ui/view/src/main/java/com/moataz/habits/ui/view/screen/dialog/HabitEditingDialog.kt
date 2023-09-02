@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.navArgs
 import com.moataz.habits.ui.view.R
 import com.moataz.habits.ui.view.databinding.FragmentHabitDialogEditingBinding
 import com.moataz.habits.ui.view.utils.setWidthPercent
@@ -24,7 +23,6 @@ import kotlinx.coroutines.launch
 class HabitEditingDialog : DialogFragment() {
     private val viewModel: HabitEditingViewModel by viewModels()
     private lateinit var binding: FragmentHabitDialogEditingBinding
-    private val argument: HabitEditingDialogArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,14 +48,6 @@ class HabitEditingDialog : DialogFragment() {
         observeEvents()
     }
 
-    private fun initNavArgs() {
-        viewModel.setupNavArgs(argument)
-        viewModel.apply {
-            habit.value = argument.habitUI
-            habitName.value = habit.value.name
-        }
-    }
-
     private fun observeEvents() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -68,10 +58,5 @@ class HabitEditingDialog : DialogFragment() {
                 }
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        initNavArgs()
     }
 }
