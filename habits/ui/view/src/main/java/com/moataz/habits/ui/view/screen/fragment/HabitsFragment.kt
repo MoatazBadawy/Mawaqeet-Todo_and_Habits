@@ -44,7 +44,9 @@ class HabitsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        observeEvents()
+        observeHabitEvent()
+        observeAddHabitEvent()
+        observeEditHabitEvent()
     }
 
     private fun initRecyclerView() {
@@ -52,23 +54,25 @@ class HabitsFragment : Fragment() {
         binding.habitsRecyclerView.adapter = habitsAdapter
     }
 
-    private fun observeEvents() {
+    private fun observeHabitEvent() {
         lifecycleScope.launch {
             viewModel.habitsUIState.collect { habitsMainState ->
                 habitsAdapter.setItems(habitsMainState.habits)
             }
         }
+    }
 
+    private fun observeAddHabitEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addHabitClickedEvent.collect {
-                    if (it) {
-                        navigateToAddHabitDialog()
-                    }
+                    if (it) navigateToAddHabitDialog()
                 }
             }
         }
+    }
 
+    private fun observeEditHabitEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.editHabitLongClickedEvent.collect {

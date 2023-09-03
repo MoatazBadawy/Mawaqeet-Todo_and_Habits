@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.moataz.habits.ui.view.R
 import com.moataz.habits.ui.view.databinding.FragmentHabitDialogEditingBinding
+import com.moataz.habits.ui.view.utils.DialogConstants.DIALOG_WIDTH_PERCENT
 import com.moataz.habits.ui.view.utils.setWidthPercent
 import com.moataz.habits.ui.viewmodel.HabitEditingViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,19 +43,21 @@ class HabitEditingDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setWidthPercent(80)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        this.isCancelable = false
-        observeEvents()
+        initializeDialog()
+        observeCancelClickEvent()
     }
 
-    private fun observeEvents() {
+    private fun initializeDialog() {
+        setWidthPercent(DIALOG_WIDTH_PERCENT)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        this.isCancelable = false
+    }
+
+    private fun observeCancelClickEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.isCancelClicked.collect {
-                    if (it) {
-                        dismiss()
-                    }
+                viewModel.isCancelClicked.collect { clicked ->
+                    if (clicked) dismiss()
                 }
             }
         }
