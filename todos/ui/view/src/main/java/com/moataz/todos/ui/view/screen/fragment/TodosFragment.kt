@@ -44,7 +44,9 @@ class TodosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        observeEvents()
+        observeTodoEvent()
+        observeAddTodoEvent()
+        observeEditTodoEvent()
     }
 
     private fun initRecyclerView() {
@@ -52,23 +54,25 @@ class TodosFragment : Fragment() {
         binding.todosRecyclerView.adapter = todosAdapter
     }
 
-    private fun observeEvents() {
+    private fun observeTodoEvent() {
         lifecycleScope.launch {
             viewModel.todosUIState.collect { todosUIState ->
                 todosAdapter.setTodos(todosUIState.todos)
             }
         }
+    }
 
+    private fun observeAddTodoEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addTodoClickedEvent.collect {
-                    if (it) {
-                        navigateToAddHabitDialog()
-                    }
+                    if (it) navigateToAddHabitDialog()
                 }
             }
         }
+    }
 
+    private fun observeEditTodoEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.editTodoLongClickedEvent.collect {
