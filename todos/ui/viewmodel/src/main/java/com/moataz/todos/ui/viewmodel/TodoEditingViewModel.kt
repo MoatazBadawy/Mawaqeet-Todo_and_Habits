@@ -1,9 +1,8 @@
 package com.moataz.todos.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavArgs
 import com.moataz.todos.domain.usecases.DeleteTodoUseCase
 import com.moataz.todos.domain.usecases.UpdateTodoTitleUseCase
 import com.moataz.todos.ui.viewmodel.mapper.toTodo
@@ -19,18 +18,26 @@ import javax.inject.Inject
 class TodoEditingViewModel @Inject constructor(
     private val updateTodoTitleUseCase: UpdateTodoTitleUseCase,
     private val deleteTodoUseCase: DeleteTodoUseCase,
+    state: SavedStateHandle,
 ) : ViewModel() {
 
-    private val _navArgs = MutableLiveData<NavArgs>()
+    private val _todoArgs: TodoUI? = state["todoUI"]
 
-    val todo = MutableStateFlow(TodoUI())
+    private val todo = MutableStateFlow(TodoUI())
     val todoTitle = MutableStateFlow("")
 
     private val _isCancelClicked = Channel<Boolean>()
     val isCancelClicked get() = _isCancelClicked.receiveAsFlow()
 
-    fun setupNavArgs(navArgs: NavArgs) {
-        _navArgs.postValue(navArgs)
+    init {
+        initializeNavigationArguments()
+    }
+
+    private fun initializeNavigationArguments() {
+        _todoArgs?.let { receivedTodo ->
+            todo.value = receivedTodo
+            todoTitle.value = receivedTodo.title
+        }
     }
 
     private fun updateTodoByTitle() {
@@ -42,20 +49,16 @@ class TodoEditingViewModel @Inject constructor(
     private fun deleteTodo() {
         viewModelScope.launch {
             deleteTodoUseCase(todo.value.toTodo())
-            clearFields()
-            onCloseDialogClick()
         }
     }
 
     fun onUpdateTodoClicked() {
         updateTodoByTitle()
-        clearFields()
         onCloseDialogClick()
     }
 
     fun onDeleteTodoClicked() {
         deleteTodo()
-        clearFields()
         onCloseDialogClick()
     }
 
@@ -63,9 +66,5 @@ class TodoEditingViewModel @Inject constructor(
         viewModelScope.launch {
             _isCancelClicked.send(true)
         }
-    }
-
-    private fun clearFields() {
-        todoTitle.value = ""
     }
 }

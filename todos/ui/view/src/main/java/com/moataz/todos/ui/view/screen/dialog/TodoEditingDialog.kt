@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.navArgs
 import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.databinding.FragmentTodoDialogEditingBinding
 import com.moataz.todos.ui.view.utils.setWidthPercent
@@ -24,7 +23,6 @@ import kotlinx.coroutines.launch
 class TodoEditingDialog : DialogFragment() {
     private val viewModel: TodoEditingViewModel by viewModels()
     private lateinit var binding: FragmentTodoDialogEditingBinding
-    private val argument: TodoEditingDialogArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,14 +48,6 @@ class TodoEditingDialog : DialogFragment() {
         observeEvents()
     }
 
-    private fun initNavArgs() {
-        viewModel.setupNavArgs(argument)
-        viewModel.apply {
-            todo.value = argument.todoUI
-            todoTitle.value = todo.value.title
-        }
-    }
-
     private fun observeEvents() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -68,10 +58,5 @@ class TodoEditingDialog : DialogFragment() {
                 }
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        initNavArgs()
     }
 }
