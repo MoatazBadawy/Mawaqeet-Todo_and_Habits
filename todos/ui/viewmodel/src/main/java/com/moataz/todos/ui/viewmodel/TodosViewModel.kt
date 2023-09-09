@@ -1,6 +1,7 @@
 package com.moataz.todos.ui.viewmodel
 
-import androidx.lifecycle.* // ktlint-disable no-wildcard-imports
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.moataz.todos.domain.usecases.GetAllTodosUseCase
 import com.moataz.todos.domain.usecases.UpdateTodoCompletedUseCase
 import com.moataz.todos.ui.viewmodel.mapper.toTodo
@@ -9,7 +10,11 @@ import com.moataz.todos.ui.viewmodel.models.TodoUI
 import com.moataz.todos.ui.viewmodel.models.TodosUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

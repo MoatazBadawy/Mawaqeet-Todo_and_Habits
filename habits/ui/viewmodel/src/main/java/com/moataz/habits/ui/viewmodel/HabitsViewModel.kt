@@ -1,6 +1,8 @@
 package com.moataz.habits.ui.viewmodel
 
-import androidx.lifecycle.* // ktlint-disable no-wildcard-imports
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.moataz.habits.domain.usecases.GetAllHabitsByTypeUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitCompletedUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitsAsNotCompletedAndNextResetUseCase
