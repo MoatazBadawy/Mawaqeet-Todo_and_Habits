@@ -1,11 +1,10 @@
 package com.moataz.habits.ui.viewmodel
 
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moataz.habits.domain.usecases.GetAllHabitsByTypeUseCase
+import com.moataz.habits.domain.usecases.ResetAllHabitsDailyUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitCompletedUseCase
-import com.moataz.habits.domain.usecases.UpdateHabitsAsNotCompletedAndNextResetUseCase
 import com.moataz.habits.ui.viewmodel.mapper.toHabit
 import com.moataz.habits.ui.viewmodel.mapper.toHabitUI
 import com.moataz.habits.ui.viewmodel.models.HabitUI
@@ -26,7 +25,7 @@ class HabitsViewModel @Inject constructor(
     private val updateHabitCompletedUseCase:
     UpdateHabitCompletedUseCase,
     private val updateHabitsAsNotCompletedAndNextResetUseCase:
-    UpdateHabitsAsNotCompletedAndNextResetUseCase,
+    ResetAllHabitsDailyUseCase,
 ) : ViewModel(), HabitsClicksListener {
 
     private val _habitsUIState = MutableStateFlow(HabitsUIState())
