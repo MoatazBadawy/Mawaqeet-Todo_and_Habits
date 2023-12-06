@@ -17,4 +17,7 @@
     <string name="polite_chip">تهذيبية</string>
     <string name="change_habits_display">تغيير من تصاعدي إلى تنازلي أو العكس</string>
     <string name="mentality_chip">عقلية</string>
+    <string name="checked_icon_description">مهمة مكتملة</string>
+    <string name="no_todos">لا توجد مهام اليوم</string>
+    <string name="error_todos">حدث خطئ ما. يرحى المحاولة مرة أخرى</string>
 </resources>

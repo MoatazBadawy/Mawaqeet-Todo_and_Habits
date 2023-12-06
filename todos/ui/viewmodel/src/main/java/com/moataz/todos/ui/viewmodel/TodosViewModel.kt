@@ -27,11 +27,11 @@ class TodosViewModel @Inject constructor(
     private val _todosUIState = MutableStateFlow(TodosUIState())
     val todosUIState: StateFlow<TodosUIState> get() = _todosUIState
 
-    private val _addTodoClickedEvent = Channel<Boolean>()
-    val addTodoClickedEvent get() = _addTodoClickedEvent.receiveAsFlow()
+    private val _showAddTodoDialog = Channel<Boolean>()
+    val showAddTodoDialog = _showAddTodoDialog.receiveAsFlow()
 
-    private val _editTodoLongClickedEvent = Channel<TodoUI>()
-    val editTodoLongClickedEvent get() = _editTodoLongClickedEvent.receiveAsFlow()
+    private val _editTodoLongClicked = Channel<TodoUI?>()
+    val editTodoLongClicked get() = _editTodoLongClicked.receiveAsFlow()
 
     init {
         viewModelScope.launch {
@@ -41,13 +41,24 @@ class TodosViewModel @Inject constructor(
 
     private fun getAllTodos() {
         viewModelScope.launch {
-            getAllTodosUseCase().collectLatest { todos ->
+            try {
+                getAllTodosUseCase().collectLatest { todos ->
+                    _todosUIState.update { todosUIState ->
+                        todosUIState.copy(
+                            isLoading = false,
+                            isSuccessful = true,
+                            isError = false,
+                            todos = todos.toTodosUI(),
+                        )
+                    }
+                }
+            } catch (e: Exception) {
                 _todosUIState.update { todosUIState ->
                     todosUIState.copy(
                         isLoading = false,
-                        isSuccessful = true,
-                        isError = false,
-                        todos = todos.toTodosUI(),
+                        isSuccessful = false,
+                        isError = true,
+                        todos = emptyList(),
                     )
                 }
             }
@@ -60,15 +71,22 @@ class TodosViewModel @Inject constructor(
         }
     }
 
+    fun onDialogDismissed() {
+        viewModelScope.launch {
+            _showAddTodoDialog.send(false)
+            _editTodoLongClicked.send(null)
+        }
+    }
+
     fun onAddTodoClicked() {
         viewModelScope.launch {
-            _addTodoClickedEvent.send(true)
+            _showAddTodoDialog.send(true)
         }
     }
 
     override fun onEditTodoLongClicked(todo: TodoUI): Boolean {
         viewModelScope.launch {
-            _editTodoLongClickedEvent.send(todo)
+            _editTodoLongClicked.send(todo)
         }
         return false
     }
