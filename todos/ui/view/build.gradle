@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace 'com.moataz.todos.ui.view'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -36,6 +36,17 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.7'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -62,4 +73,14 @@ dependencies {
     // lottie animations
     implementation "com.airbnb.android:lottie:6.0.0"
     implementation project(":todos:ui:viewmodel")
+    // compose
+    implementation "androidx.compose.ui:ui:1.5.4"
+    implementation "androidx.compose.material:material:1.5.4"
+    implementation "androidx.compose.ui:ui-tooling:1.5.4"
+    implementation "androidx.compose.runtime:runtime:1.5.4"
+    implementation 'androidx.activity:activity-compose:1.8.1'
+    implementation "androidx.compose.material:material-icons-core:1.5.4"
+    //navigation component
+    implementation "androidx.navigation:navigation-compose:2.7.5"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.1.0'
 }

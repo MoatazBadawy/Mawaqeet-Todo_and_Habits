@@ -23,15 +23,15 @@ class TodosRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateTodoTitle(todo: Todo, title: String) {
-        dao.updateTodoTitle(todo.id, title)
+    override suspend fun updateTodoTitle(id: Long, title: String) {
+        dao.updateTodoTitle(id, title)
     }
 
     override suspend fun updateTodoByCompleted(todo: Todo, isCompleted: Boolean) {
         dao.updateTodoCompleted(todo.id, isCompleted)
     }
 
-    override suspend fun deleteTodo(todo: Todo) {
-        dao.deleteTodo(todo.id)
+    override suspend fun deleteTodo(id: Long) {
+        dao.deleteTodo(id)
     }
 }

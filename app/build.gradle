@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'com.moataz.mawaqeet'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.moataz.mawaqeet"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 11
         versionName "1.2.2"
 
@@ -39,6 +39,17 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.7'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -80,5 +91,12 @@ dependencies {
     implementation(project(":todos:domain:repository"))
     implementation(project(":habits:ui:view"))
     implementation(project(":todos:ui:view"))
+
+    // compose
+    implementation "androidx.compose.ui:ui:1.5.4"
+    implementation "androidx.compose.material:material:1.5.4"
+    implementation "androidx.compose.ui:ui-tooling:1.5.4"
+    implementation "androidx.compose.runtime:runtime:1.5.4"
+    implementation 'androidx.activity:activity-compose:1.8.1'
 
 }
