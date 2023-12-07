@@ -19,7 +19,7 @@ import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.theme.Black
 
 @Composable
-fun TodosError() {
+fun TodoError() {
     Text(
         text = stringResource(id = R.string.error_todos),
         style = TextStyle(

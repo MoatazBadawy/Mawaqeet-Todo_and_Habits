@@ -21,16 +21,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.component.Loading
+import com.moataz.todos.ui.view.component.TodoError
 import com.moataz.todos.ui.view.component.TodoItem
 import com.moataz.todos.ui.view.component.TodosEmpty
-import com.moataz.todos.ui.view.component.TodosError
 import com.moataz.todos.ui.view.component.TodosToolbar
 import com.moataz.todos.ui.view.screens.todo_add.navigateToAddTodo
 import com.moataz.todos.ui.view.screens.todo_edit.navigateToEditTodo
 import com.moataz.todos.ui.view.theme.White50
 import com.moataz.todos.ui.viewmodel.TodosViewModel
+import com.moataz.todos.ui.viewmodel.models.TodoUI
 
-@OptIn(ExperimentalFoundationApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TodosScreen(
@@ -56,43 +56,58 @@ fun TodosScreen(
                 when {
                     todosUIState.isLoading -> Loading()
 
-                    todosUIState.isSuccessful -> {
-                        if (todosUIState.todos.isNotEmpty()) {
-                            LazyColumn {
-                                items(todosUIState.todos, key = { it }) { todo ->
-                                    TodoItem(
-                                        modifier = Modifier
-                                            .animateItemPlacement(
-                                                animationSpec = tween(
-                                                    durationMillis = 425,
-                                                )
-                                            ),
-                                        todo = todo,
-                                        onTodoLongClicked = navController::navigateToEditTodo,
-                                        onTodoCheckedChange = viewModel::updateTodoCompleted,
-                                    )
-                                }
-                            }
-                        } else {
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                TodosEmpty()
-                            }
-                        }
-                    }
+                    todosUIState.isSuccessful -> TodosSuccess(
+                        todos = todosUIState.todos,
+                        navigateToEditTodo = navController::navigateToEditTodo,
+                        updateTodoCompleted = viewModel::updateTodoCompleted,
+                    )
 
-                    todosUIState.isError -> {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            TodosError()
-                        }
-                    }
+                    todosUIState.isError -> TodosError()
                 }
             }
         },
     )
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun TodosSuccess(
+    todos: List<TodoUI>,
+    navigateToEditTodo: (Long, String) -> Unit,
+    updateTodoCompleted: (TodoUI, Boolean) -> Unit
+) {
+    if (todos.isNotEmpty()) {
+        LazyColumn {
+            items(todos, key = { it }) { todo ->
+                TodoItem(
+                    modifier = Modifier
+                        .animateItemPlacement(
+                            animationSpec = tween(
+                                durationMillis = 425,
+                            )
+                        ),
+                    todo = todo,
+                    onTodoLongClicked = navigateToEditTodo,
+                    onTodoCheckedChange = updateTodoCompleted,
+                )
+            }
+        }
+    } else {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            TodosEmpty()
+        }
+    }
+}
+
+@Composable
+fun TodosError() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        TodoError()
+    }
 }
