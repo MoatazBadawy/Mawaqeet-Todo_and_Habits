@@ -18,4 +18,6 @@
     <string name="change_habits_display">تغيير من تصاعدي إلى تنازلي أو العكس</string>
     <string name="mentality_chip">عقلية</string>
     <string name="checked_icon_description">عادة مكتملة</string>
+    <string name="no_habits">لا يوجد عادات، أضف بعضها الآن...</string>
+    <string name="error_habits">حدث خطئ ما. يرحى المحاولة مرة أخرى</string>
 </resources>
