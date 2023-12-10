@@ -31,7 +31,8 @@ class HabitsViewModel @Inject constructor(
     private val _habitsUIState = MutableStateFlow(HabitsUIState())
     val habitsUIState: StateFlow<HabitsUIState> get() = _habitsUIState
 
-    private val currentHabitType = MutableStateFlow(HabitType.SPIRITUALITY)
+    private val _currentHabitType = MutableStateFlow(HabitType.SPIRITUALITY)
+    val currentHabitType get() = _currentHabitType.asStateFlow()
 
     private val _addHabitClickedEvent = Channel<Boolean>()
     val addHabitClickedEvent get() = _addHabitClickedEvent.receiveAsFlow()
@@ -50,7 +51,7 @@ class HabitsViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun getAllHabitsByType() {
         viewModelScope.launch {
-            currentHabitType.flatMapLatest { habitType ->
+            _currentHabitType.flatMapLatest { habitType ->
                 getAllHabitsByTypeUseCase(habitType.pathName)
             }.collectLatest { habitsModel ->
                 _habitsUIState.update { habitsMainUiState ->
@@ -97,8 +98,8 @@ class HabitsViewModel @Inject constructor(
     }
 
     fun onChipTypeClicked(habitType: HabitType) {
-        if (habitType != currentHabitType.value) {
-            currentHabitType.value = habitType
+        if (habitType != _currentHabitType.value) {
+            _currentHabitType.value = habitType
         }
     }
 
