@@ -19,7 +19,7 @@ import com.moataz.habits.ui.view.R
 import com.moataz.habits.ui.view.compose.theme.Black
 
 @Composable
-fun HabitsError() {
+fun HabitError() {
     Text(
         text = stringResource(id = R.string.error_habits),
         style = TextStyle(

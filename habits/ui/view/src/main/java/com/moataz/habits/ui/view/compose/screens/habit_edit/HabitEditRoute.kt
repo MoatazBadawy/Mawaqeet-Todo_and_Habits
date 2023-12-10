@@ -25,7 +25,6 @@ fun NavGraphBuilder.habitEditRoute(navController: NavController) {
         )
     ) {
         HabitEditScreen(
-            navController = navController,
             onDismiss = { navController.popBackStack() }
         )
     }

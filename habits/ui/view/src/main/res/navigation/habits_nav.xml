@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/habits_fragment"
-        android:name="com.moataz.habits.ui.view.screen.fragment.HabitsFragment"
+        android:name="com.moataz.habits.ui.view.compose.screens.HabitsFragment"
         android:label="habits_fragment"
         tools:layout="@layout/fragment_habit">
         <action

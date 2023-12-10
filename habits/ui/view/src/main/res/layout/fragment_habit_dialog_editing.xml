@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/habit_name"
                     android:inputType="text"
-                    android:text="@={viewModel.habitName}"
+                    android:text="@={viewModel.habitTitle}"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
