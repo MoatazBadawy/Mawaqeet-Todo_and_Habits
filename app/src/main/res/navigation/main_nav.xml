@@ -5,5 +5,9 @@
     app:startDestination="@id/habits_nav">
 
     <include app:graph="@navigation/habits_nav" />
-    <include app:graph="@navigation/todos_nav" />
+    <fragment
+        android:id="@+id/todos_nav"
+        android:name="com.moataz.todos.ui.view.screens.TodosFragment"
+        android:label="TodosFragment" />
+
 </navigation>
