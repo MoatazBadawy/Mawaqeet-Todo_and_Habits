@@ -22,9 +22,6 @@ class TodoEditingViewModel @Inject constructor(
     private val _todoArgs = TodoDetailsArgs(state)
     val todoTitle = MutableStateFlow("")
 
-    private val _isCancelClicked = Channel<Boolean>()
-    val isCancelClicked get() = _isCancelClicked.receiveAsFlow()
-
     init {
         initNavArgs()
     }
@@ -51,11 +48,5 @@ class TodoEditingViewModel @Inject constructor(
 
     fun onDeleteTodoClicked() {
         deleteTodo()
-    }
-
-    fun onCloseDialogClick() {
-        viewModelScope.launch {
-            _isCancelClicked.send(true)
-        }
     }
 }

@@ -10,7 +10,6 @@ fun NavGraphBuilder.todoAddRoute(navController: NavController) {
         route = Screen.TodoAdd.route,
         content = {
             TodoAddingDialogScreen(
-                navController = navController,
                 onDismiss = { navController.popBackStack() },
             )
         },

@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.moataz.todos.ui.view.R
 import com.moataz.todos.ui.view.theme.Black
 import com.moataz.todos.ui.viewmodel.TodoAddingViewModel
@@ -43,7 +42,6 @@ import com.moataz.todos.ui.viewmodel.TodoAddingViewModel
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun TodoAddingDialogScreen(
-    navController: NavController,
     viewModel: TodoAddingViewModel = hiltViewModel(),
     onDismiss: () -> Unit
 ) {

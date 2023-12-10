@@ -21,7 +21,6 @@ fun NavGraphBuilder.todoEditRoute(navController: NavController) {
         )
     ) {
         TodoEditScreen(
-            navController = navController,
             onDismiss = { navController.popBackStack() }
         )
     }

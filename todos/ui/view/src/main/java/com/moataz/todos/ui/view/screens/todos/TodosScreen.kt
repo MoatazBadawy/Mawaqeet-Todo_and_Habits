@@ -59,7 +59,7 @@ fun TodosScreen(
                     todosUIState.isSuccessful -> TodosSuccess(
                         todos = todosUIState.todos,
                         navigateToEditTodo = navController::navigateToEditTodo,
-                        updateTodoCompleted = viewModel::updateTodoCompleted,
+                        updateTodoCompleted = viewModel::onTodoCheckedChanged,
                     )
 
                     todosUIState.isError -> TodosError()
@@ -74,7 +74,7 @@ fun TodosScreen(
 fun TodosSuccess(
     todos: List<TodoUI>,
     navigateToEditTodo: (Long, String) -> Unit,
-    updateTodoCompleted: (TodoUI, Boolean) -> Unit
+    updateTodoCompleted: (Long, Boolean) -> Unit
 ) {
     if (todos.isNotEmpty()) {
         LazyColumn {

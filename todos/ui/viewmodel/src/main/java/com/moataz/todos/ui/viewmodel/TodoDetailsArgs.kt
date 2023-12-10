@@ -1,7 +1,6 @@
 package com.moataz.todos.ui.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
-import com.moataz.todos.ui.viewmodel.models.TodoUI
 
 class TodoDetailsArgs(savedStateHandle: SavedStateHandle) {
 

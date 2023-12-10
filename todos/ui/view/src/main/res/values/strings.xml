@@ -1,22 +1,12 @@
 <resources>
     <string name="todos">مهام</string>
-    <string name="add_new_todo">إضافة مهمة جديدة</string>
     <string name="new_todo">مهمة جديدة</string>
-    <string name="todo_name_error_message">لايمكن ترك المهمة فارغة</string>
     <string name="todo_name">عنوان المهمة</string>
     <string name="add">إضافة</string>
     <string name="cancel">إلغاء</string>
     <string name="delete_habit">حذف</string>
     <string name="update_habit">تحديث</string>
     <string name="edit_todo">تعديل المهمة</string>
-    <string name="spirituality_chip">روحية</string>
-    <string name="personality_chip">شخصية</string>
-    <string name="mental_chip">عقلية</string>
-    <string name="process_chip">عملية</string>
-    <string name="physical_chip">بدنية</string>
-    <string name="polite_chip">تهذيبية</string>
-    <string name="change_habits_display">تغيير من تصاعدي إلى تنازلي أو العكس</string>
-    <string name="mentality_chip">عقلية</string>
     <string name="checked_icon_description">مهمة مكتملة</string>
     <string name="no_todos">لا توجد مهام اليوم</string>
     <string name="error_todos">حدث خطئ ما. يرحى المحاولة مرة أخرى</string>
