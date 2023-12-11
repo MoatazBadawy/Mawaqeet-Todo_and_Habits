@@ -10,7 +10,6 @@ fun NavGraphBuilder.habitAddRoute(navController: NavController) {
         route = Screen.HabitAdd.route,
         content = {
             HabitAddingDialogScreen(
-                navController = navController,
                 onDismiss = { navController.popBackStack() },
             )
         },

@@ -17,7 +17,8 @@ class HabitAddingViewModel @Inject constructor(
     private val insertHabitUseCase: InsertHabitUseCase,
 ) : ViewModel() {
 
-    private val habitType = MutableStateFlow(HabitType.SPIRITUALITY)
+    private val _habitType = MutableStateFlow(HabitType.SPIRITUALITY)
+    val habitType get() = _habitType.asStateFlow()
     val habitName = MutableStateFlow("")
 
     private val _isNameValid = MutableStateFlow(true)
@@ -31,7 +32,7 @@ class HabitAddingViewModel @Inject constructor(
             try {
                 insertHabitUseCase(
                     habitName.value,
-                    habitType.value.pathName
+                    _habitType.value.pathName
                 )
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -49,7 +50,7 @@ class HabitAddingViewModel @Inject constructor(
     }
 
     fun onChipChooseHabitType(type: HabitType) {
-        habitType.value = type
+        _habitType.value = type
     }
 
     fun onCloseDialogClick() {
