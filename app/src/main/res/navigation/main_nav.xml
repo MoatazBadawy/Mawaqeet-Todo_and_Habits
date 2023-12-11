@@ -4,10 +4,13 @@
     android:id="@+id/main_nav"
     app:startDestination="@id/habits_nav">
 
-    <include app:graph="@navigation/habits_nav" />
+    <fragment
+        android:id="@+id/habits_nav"
+        android:name="com.moataz.habits.ui.view.screens.HabitsFragment"
+        android:label="HabitsFragment" />
+
     <fragment
         android:id="@+id/todos_nav"
         android:name="com.moataz.todos.ui.view.screens.TodosFragment"
         android:label="TodosFragment" />
-
 </navigation>
