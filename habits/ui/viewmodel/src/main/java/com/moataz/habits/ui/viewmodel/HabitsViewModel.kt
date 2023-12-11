@@ -5,16 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.moataz.habits.domain.usecases.GetAllHabitsByTypeUseCase
 import com.moataz.habits.domain.usecases.ResetAllHabitsDailyUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitCompletedUseCase
-import com.moataz.habits.ui.viewmodel.mapper.toHabit
 import com.moataz.habits.ui.viewmodel.mapper.toHabitUI
-import com.moataz.habits.ui.viewmodel.models.HabitUI
 import com.moataz.habits.ui.viewmodel.models.HabitsUIState
 import com.moataz.habits.ui.viewmodel.utils.HabitType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,19 +28,13 @@ class HabitsViewModel @Inject constructor(
     UpdateHabitCompletedUseCase,
     private val updateHabitsAsNotCompletedAndNextResetUseCase:
     ResetAllHabitsDailyUseCase,
-) : ViewModel(), HabitsClicksListener {
+) : ViewModel() {
 
     private val _habitsUIState = MutableStateFlow(HabitsUIState())
     val habitsUIState: StateFlow<HabitsUIState> get() = _habitsUIState
 
     private val _currentHabitType = MutableStateFlow(HabitType.SPIRITUALITY)
     val currentHabitType get() = _currentHabitType.asStateFlow()
-
-    private val _addHabitClickedEvent = Channel<Boolean>()
-    val addHabitClickedEvent get() = _addHabitClickedEvent.receiveAsFlow()
-
-    private val _editHabitLongClickedEvent = Channel<HabitUI>()
-    val editHabitLongClickedEvent get() = _editHabitLongClickedEvent.receiveAsFlow()
 
     init {
         viewModelScope.launch {
@@ -77,10 +73,10 @@ class HabitsViewModel @Inject constructor(
         }
     }
 
-    override fun updateHabitCompleted(habit: HabitUI, isCompleted: Boolean) {
+    fun updateHabitCompleted(id: Long, isCompleted: Boolean) {
         viewModelScope.launch {
             try {
-                updateHabitCompletedUseCase(habit.toHabit(), isCompleted)
+                updateHabitCompletedUseCase(id, isCompleted)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -101,18 +97,5 @@ class HabitsViewModel @Inject constructor(
         if (habitType != _currentHabitType.value) {
             _currentHabitType.value = habitType
         }
-    }
-
-    fun onAddHabitClicked() {
-        viewModelScope.launch {
-            _addHabitClickedEvent.send(true)
-        }
-    }
-
-    override fun onEditHabitLongClicked(habit: HabitUI): Boolean {
-        viewModelScope.launch {
-            _editHabitLongClickedEvent.send(habit)
-        }
-        return false
     }
 }

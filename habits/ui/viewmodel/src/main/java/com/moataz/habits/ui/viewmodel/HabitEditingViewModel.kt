@@ -6,9 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.moataz.habits.domain.usecases.DeleteHabitUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitNameUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,9 +19,6 @@ class HabitEditingViewModel @Inject constructor(
 
     private val _habitArgs = HabitDetailsArgs(state)
     val habitTitle = MutableStateFlow("")
-
-    private val _isCancelClicked = Channel<Boolean>()
-    val isCancelClicked get() = _isCancelClicked.receiveAsFlow()
 
     init {
         initNavArgs()
@@ -51,11 +46,5 @@ class HabitEditingViewModel @Inject constructor(
 
     fun onDeleteHabitClicked() {
         deleteHabit()
-    }
-
-    fun onCloseDialogClick() {
-        viewModelScope.launch {
-            _isCancelClicked.send(true)
-        }
     }
 }
