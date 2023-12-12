@@ -1,40 +1,32 @@
 package com.moataz.mawaqeet.main
 
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.moataz.mawaqeet.R
 import com.moataz.mawaqeet.components.notification.HabitAlertMorningNotification
 import com.moataz.mawaqeet.components.notification.HabitAlertNightNotification
-import com.moataz.mawaqeet.databinding.ActivityMainBinding
 import com.suddenh4x.ratingdialog.AppRating
 import com.suddenh4x.ratingdialog.preferences.RatingThreshold
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setContent {
+            MainScreen()
+        }
         initView(window)
-        initNavigationHosting()
         initNotification()
-        initBottomNavigation()
         displayAppRating()
         inAppUpdate()
     }
@@ -46,18 +38,6 @@ class MainActivity : AppCompatActivity() {
         // even if the language of the device on english or others
         ViewCompat.setLayoutDirection(window.decorView, ViewCompat.LAYOUT_DIRECTION_RTL)
         return window
-    }
-
-    private fun initNavigationHosting(): NavController {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        return navHostFragment.navController
-    }
-
-    private fun initBottomNavigation() {
-        binding.bottomNavView.setupWithNavController(initNavigationHosting())
-        binding.bottomNavView.itemRippleColor =
-            ColorStateList.valueOf(Color.parseColor("#F8F8F8"))
     }
 
     private fun initNotification() {

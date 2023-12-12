@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'com.moataz.mawaqeet'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.moataz.mawaqeet"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 11
         versionName "1.2.2"
 
@@ -37,16 +37,23 @@ android {
     kapt {
         generateStubs = true
     }
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.6'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -54,25 +61,19 @@ dependencies {
     // to fix error "cannot fit requested classes in a single dex file"
     implementation 'com.android.support:multidex:1.0.3'
     // avoid Android 12 errors
-    implementation 'androidx.work:work-runtime-ktx:2.8.1'
-    implementation 'androidx.work:work-runtime:2.8.1'
-    // ktx
-    implementation 'androidx.activity:activity-ktx:1.7.2'
-    implementation 'androidx.fragment:fragment-ktx:1.6.1'
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'androidx.work:work-runtime:2.9.0'
     // in app rating
     implementation 'com.suddenh4x.ratingdialog:awesome-app-rating:2.4.0'
     // core play services
     implementation 'com.google.android.play:core-ktx:1.8.1'
-    // Navigation component
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     // dagger hilt
-    implementation 'com.google.dagger:hilt-android:2.45'
-    kapt 'com.google.dagger:hilt-compiler:2.45'
+    implementation 'com.google.dagger:hilt-android:2.48'
+    kapt 'com.google.dagger:hilt-compiler:2.46.1'
     // room database
-    implementation "androidx.room:room-runtime:2.5.2"
-    implementation "androidx.room:room-ktx:2.5.2"
-    ksp "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-runtime:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
+    ksp "androidx.room:room-compiler:2.6.1"
     implementation(project(":common:data"))
     implementation(project(":habits:data:repositories"))
     implementation(project(":todos:data:repositories"))
@@ -80,5 +81,14 @@ dependencies {
     implementation(project(":todos:domain:repository"))
     implementation(project(":habits:ui:view"))
     implementation(project(":todos:ui:view"))
-
+    // compose
+    implementation "androidx.compose.ui:ui:1.5.4"
+    implementation "androidx.compose.material:material:1.5.4"
+    implementation "androidx.compose.ui:ui-tooling:1.5.4"
+    implementation "androidx.compose.runtime:runtime:1.5.4"
+    implementation 'androidx.activity:activity-compose:1.8.1'
+    implementation "androidx.compose.material:material-icons-core:1.5.4"
+    //navigation component
+    implementation "androidx.navigation:navigation-compose:2.7.5"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.1.0'
 }

@@ -30,19 +30,19 @@ class HabitsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateHabitByCompleted(habit: Habit, isCompleted: Boolean) {
-        dao.updateHabitCompleted(habit.id, isCompleted)
+    override suspend fun updateHabitByCompleted(id: Long, isCompleted: Boolean) {
+        dao.updateHabitCompleted(id, isCompleted)
     }
 
-    override suspend fun updateHabitName(habit: Habit, name: String) {
-        dao.updateHabitName(habit.id, name)
+    override suspend fun updateHabitName(id: Long, name: String) {
+        dao.updateHabitName(id, name)
     }
 
     override suspend fun updateHabits(habits: List<Habit>) {
         dao.updateHabits(habits.toHabitsEntities())
     }
 
-    override suspend fun deleteHabit(habit: Habit) {
-        dao.deleteHabit(habit.id)
+    override suspend fun deleteHabit(id: Long) {
+        dao.deleteHabit(id)
     }
 }

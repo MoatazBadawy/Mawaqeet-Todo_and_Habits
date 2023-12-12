@@ -5,12 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moataz.habits.domain.usecases.DeleteHabitUseCase
 import com.moataz.habits.domain.usecases.UpdateHabitNameUseCase
-import com.moataz.habits.ui.viewmodel.mapper.toHabit
-import com.moataz.habits.ui.viewmodel.models.HabitUI
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,50 +17,34 @@ class HabitEditingViewModel @Inject constructor(
     state: SavedStateHandle,
 ) : ViewModel() {
 
-    private val _habitArgs: HabitUI? = state["habitUI"]
-
-    private val habit = MutableStateFlow(HabitUI())
-    val habitName = MutableStateFlow("")
-
-    private val _isCancelClicked = Channel<Boolean>()
-    val isCancelClicked get() = _isCancelClicked.receiveAsFlow()
+    private val _habitArgs = HabitDetailsArgs(state)
+    val habitTitle = MutableStateFlow("")
 
     init {
-        initializeNavigationArguments()
+        initNavArgs()
     }
 
-    private fun initializeNavigationArguments() {
-        _habitArgs?.let { receivedHabit ->
-            habit.value = receivedHabit
-            habitName.value = receivedHabit.name
-        }
+    private fun initNavArgs() {
+        habitTitle.value = _habitArgs.habitTitle ?: ""
     }
 
     private fun updateHabitByName() {
         viewModelScope.launch {
-            updateHabitNameUseCase(habit.value.toHabit(), habitName.value)
+            updateHabitNameUseCase(_habitArgs.habitId!!, habitTitle.value)
         }
     }
 
     private fun deleteHabit() {
         viewModelScope.launch {
-            deleteHabitUseCase(habit.value.toHabit())
+            deleteHabitUseCase(_habitArgs.habitId!!)
         }
     }
 
     fun onUpdateHabitClicked() {
         updateHabitByName()
-        onCloseDialogClick()
     }
 
     fun onDeleteHabitClicked() {
         deleteHabit()
-        onCloseDialogClick()
-    }
-
-    fun onCloseDialogClick() {
-        viewModelScope.launch {
-            _isCancelClicked.send(true)
-        }
     }
 }
