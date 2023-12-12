@@ -77,7 +77,7 @@ fun TodosSuccess(
     updateTodoCompleted: (Long, Boolean) -> Unit
 ) {
     if (todos.isNotEmpty()) {
-        LazyColumn {
+        LazyColumn(modifier = Modifier.padding(bottom = 60.dp)) {
             items(todos, key = { it }) { todo ->
                 TodoItem(
                     modifier = Modifier

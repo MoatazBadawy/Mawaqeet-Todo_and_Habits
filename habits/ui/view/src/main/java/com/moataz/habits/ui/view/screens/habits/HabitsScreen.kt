@@ -85,7 +85,7 @@ fun HabitTypeChips(viewModel: HabitsViewModel) {
 
     Spacer(modifier = Modifier.padding(top = 4.dp))
     LazyRow(modifier = Modifier.padding(horizontal = 8.dp)) {
-        items(HabitType.values().toList()) { habitType ->
+        items(HabitType.entries) { habitType ->
             HabitTypeChip(
                 text = habitType.displayName,
                 checked = habitType == currentHabitType,
@@ -103,7 +103,7 @@ fun HabitsSuccess(
     updateHabitCompleted: (Long, Boolean) -> Unit
 ) {
     if (habits.isNotEmpty()) {
-        LazyColumn {
+        LazyColumn(modifier = Modifier.padding(bottom = 60.dp)) {
             items(habits, key = { it }) { habit ->
                 HabitItem(
                     modifier = Modifier

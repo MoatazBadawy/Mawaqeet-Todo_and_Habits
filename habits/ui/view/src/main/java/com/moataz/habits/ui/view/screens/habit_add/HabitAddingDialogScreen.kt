@@ -165,7 +165,7 @@ fun HabitTypeChips(viewModel: HabitAddingViewModel) {
 
     Spacer(modifier = Modifier.padding(top = 4.dp))
     LazyRow(modifier = Modifier.padding(horizontal = 8.dp)) {
-        items(HabitType.values().toList()) { habitType ->
+        items(HabitType.entries) { habitType ->
             HabitTypeChip(
                 text = habitType.displayName,
                 checked = habitType == currentHabitType,
