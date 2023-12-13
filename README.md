@@ -18,16 +18,16 @@
 </p>
 
 ## About the project
-🚀 Is a modern Android app, built In different versions (Jetpack Coompose and XML). It's Powered by Hilt, Coroutines, Flow, Jetpack (Room, ViewModel, Navigation), Lottie, and Material Design. The app is structured based on Clean architecture and MVVM architecture, and modulized by feature.
+🚀 Is a modern Android app, built In different versions (Jetpack Compose and XML). It's Powered by Hilt, Coroutines, Flow, Jetpack (Room, ViewModel, Navigation), Lottie, and Material Design. The app is structured based on Clean architecture and MVVM architecture, and modulized by feature.
 
 #### 🔗 Download
-Go to the [Releases](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/releases) to download the latest APK. Or simply get it from the Play Store 👇
+Go to the [Releases](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/releases) to download the latest APK. Or get it from the Play Store 👇
 
 <a href='https://play.google.com/store/apps/details?id=com.moataz.mawaqeet'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 ## How it works
 
-#### 🌟 Project format
-We have built our application in different versions to make sure that everyone can learn from it. Whether you prefer the futuristic feel of Jetpack Compose or the classic reliability of XML, we've got you covered. Dive into a visually appealing design that enhances usability and captivates your senses.
+#### 🌟 Project Overview
+We have built our application in different versions to ensure everyone can learn from it. Whether you prefer the futuristic feel of Jetpack Compose or the classic reliability of XML, we've got you covered. Dive into a visually appealing design that enhances usability and captivates your senses.
 > [!NOTE]
 > You can obtain the different versions of the project through the following branches: <br>
 > - Native (XML): [bransh/tree/native.xml](https://github.com/MoatazBadawy/Mawaqeet-Todo_and_Habits/tree/native/xml)
@@ -38,7 +38,7 @@ We have built our application in different versions to make sure that everyone c
 Mawaqeet follows the Clean Architecture structure and MVVM to provide logical simplicity and maintainability. <br> 
 - The domain layer contains UseCases that encapsulate a single, specific task that is part of the application's business logic. <br>
 - The data layer implements the repository interface defined in the domain layer, providing a single source of truth for data. <br>
-- The UI layer cnotance view and viewModel layers, it uses all the components and classes related to the Android framework to get the data from the ViewModel layer and display it on the device.
+- The UI layer cnotance view and ViewModel layers, it uses all the components and classes related to the Android framework to get the data from the ViewModel layer and display it on the device.
 
 <img src="https://koenig-media.raywenderlich.com/uploads/2019/06/Clean-Architecture-graph.png" width="500" />
 
@@ -67,7 +67,7 @@ With a modular architecture, the app is designed for scalability and maintainabi
 ## 🔧 Tech stack & Open-source libraries
 - Minimum SDK level 24
 - [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) is Android's recommended by google modern toolkit for building native UI.
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) is Android's recommended by Google modern toolkit for building native UI.
 - Jetpack
   - Lifecycle: Observe Android lifecycles and handle UI states upon the lifecycle changes.
   - ViewModel: Manages UI-related data holder and lifecycle awareness. Allows data to survive configuration changes such as screen rotations.
