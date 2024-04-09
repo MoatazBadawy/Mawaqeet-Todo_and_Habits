@@ -94,7 +94,7 @@ Support it by joining __[stargazers](https://github.com/MoatazBadawy/Mawaqeet-To
 
 # License
 ```XML
-Designed and developed by 2023 Moataz Mohamed
+Designed and developed by 2023 Moataz Badawy
 
 Licensed under the Apache License, Version 2.0 (the "License");
 You may not use this file except in compliance with the License.
